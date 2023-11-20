@@ -1,9 +1,20 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
+import Header from './Components/Header/Header';
+import HomeLoans from "./Components/HomeLoans/HomeLoans";
 
 function App() {
   return (
-    <p>Omg andrea is the fuckin best</p>
+    <>
+    <BrowserRouter>
+        <Header />
+        <HomeLoans/>
+          <Routes>
+            <Route path="/" />
+          </Routes>
+    </BrowserRouter>
+    </>
+    
   );
 }
 

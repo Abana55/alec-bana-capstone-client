@@ -1,0 +1,185 @@
+@use "./variables" as *;
+
+// Breakpoints
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+// Text Style Mixins for Mobile
+@mixin mobile-header-text {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: $font-weight-semi-bold;
+  color: $primary-black;
+  font-family: 'titillium-semibold';
+}
+
+@mixin mobile-subheader-text {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: $font-weight-semi-bold;
+  color: $primary-black;
+  font-family: 'titillium-semibold';
+}
+
+@mixin mobile-labels-links-buttons-text {
+  font-size: .8125rem;
+  line-height: 1.25rem;
+  font-weight: $font-weight-semi-bold;
+  color: $primary-black;
+  font-family: 'titillium-semibold';
+}
+
+@mixin mobile-table-header {
+  font-size: .6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  font-weight: $font-weight-semi-bold;
+  color: $secondary-slate;
+  font-family: 'titillium-semibold';
+}
+
+@mixin mobile-table-text {
+  font-size: .8125rem;
+  line-height: 1.25rem;
+  color: $primary-black;
+  font-family: 'titillium';
+}
+
+@mixin mobile-body-large-text {
+  font-size: .9375rem;
+  line-height: 1.625rem;
+  font-weight: $font-weight-regular;
+  color: $primary-black;
+  font-family: 'titillium';
+}
+
+@mixin mobile-body-medium-text {
+  font-size: .8125rem;
+  line-height: 1.25rem;
+  font-weight: $font-weight-regular;
+  color: $primary-black;
+  font-family: 'titillium';
+}
+
+@mixin mobile-body-small-text {
+  font-size: .6875rem;
+  line-height: 1rem;
+  font-weight: $font-weight-regular;
+  color: $primary-black;
+  font-family: 'titillium';
+}
+
+// Text Style Mixins for Mobile
+@mixin tablet-header-text {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+@mixin tablet-subheader-text {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin tablet-labels-links-buttons-text {
+  font-size: .875rem;
+  line-height: 1.375rem;
+}
+
+@mixin tablet-table-header {
+  font-size: .75rem;
+  line-height: 1.125rem;
+}
+
+@mixin tablet-body-large-text {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+@mixin tablet-body-medium-text {
+  font-size: .875rem;
+  line-height: 1.375rem;
+}
+
+@mixin tablet-body-small-text {
+  font-size: .75rem;
+  line-height: 1.125rem;
+}
+
+// Selection Controls Mixins
+@mixin spacing-radio-button {
+  padding-top: .25rem;
+  padding-left: .5rem;
+}
+
+// Form Field Mixins
+@mixin form-field {
+  height: 2.25rem;
+  width: 100%;
+  padding: .25rem 1rem 0 1rem;
+  border-radius: 20px;
+  border: 1px solid $secondary-cloud;
+  @include mobile-body-medium-text;
+
+  @include tablet {
+    height: 2.375rem;
+    @include tablet-body-medium-text;
+  }
+}
+
+// Button Mixins
+@mixin cta-button {
+  @include mobile-labels-links-buttons-text;
+  height: 2.25rem;
+  padding: 0 1rem;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+
+  @include tablet{
+    height: 2.375rem;
+    @include tablet-labels-links-buttons-text;
+  }
+}
+
+
+// Tags Mixins
+@mixin out-of-stock-tag {
+  height: fit-content;
+  padding: .25rem .75rem .25rem .75rem;
+  background: rgba(201,69,21, .07);
+  border-radius: 20px;
+  color: $supporting-red;
+  text-transform: uppercase;
+  width: fit-content;
+  margin: auto 0;
+}
+
+@mixin in-stock-tag {
+  @include out-of-stock-tag;
+  background: rgba(21,132,99, .07);
+  color: $supporting-green;
+}
+
+// Divider Mixin
+@mixin divider {
+  border-bottom: 1px solid $secondary-cloud;
+}
+
+// Padding Mixins
+@mixin padding-headlines {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+@mixin padding-bottom-components {
+  padding-bottom: 1rem;
+}

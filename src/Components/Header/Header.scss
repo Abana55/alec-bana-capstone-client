@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+    @include mobile-labels-links-buttons-text;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $background-graphite;
+
+    @include tablet {
+        @include tablet-labels-links-buttons-text;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    &__title {
+        color: #D4AC0D;
+        font-size: 2.625rem;
+    }
+
+    &__logo {
+        padding-top: 1.25rem;
+
+        @include tablet {
+            padding-left: 4rem;
+        }
+    }
+
+    &__links {
+        display: flex;
+        padding: 1.25rem;
+
+        @include tablet {
+            padding-right: 2rem;
+        }
+
+        @include desktop {
+            padding-right: 4rem;
+        }
+
+        &-warehouses {
+            padding-right: 2.5rem;
+            padding-left: 2.5rem;
+            padding-top: .625rem;
+            padding-bottom: .625rem;
+            color: $secondary-cloud;
+
+            &.active{
+                background-color: $primary-black;
+                color: $primary-white;
+                border-radius: 20px;
+            }
+        }
+
+        &-inventory {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            padding-top: .625rem;
+            padding-bottom: .625rem;
+            color: $secondary-cloud;
+
+            &.active{
+                background-color: $primary-black;
+                color: $primary-white;
+                border-radius: 20px;
+            }
+        }
+    }
+}
