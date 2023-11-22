@@ -1,4 +1,5 @@
 import "./HomeLoans.scss";
+import DonutChart from '../DonutChart/DonutChart';
 
 function HomeLoans() {
   return (
@@ -41,6 +42,9 @@ function HomeLoans() {
             <div className="input__">
               <input className="input__" />$
             </div>
+          </div>
+          <div>
+            <DonutChart/>
           </div>
         </section>
       </section>
