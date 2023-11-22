@@ -42,11 +42,11 @@ function HomeLoans() {
             <div className="input__">
               <input className="input__" />$
             </div>
-          </div>
-          <div>
+          </div>     
+        </section>
+        <div>
             <DonutChart/>
           </div>
-        </section>
       </section>
     </>
   );
