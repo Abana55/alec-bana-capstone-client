@@ -4,8 +4,8 @@ import DonutChart from '../DonutChart/DonutChart';
 function HomeLoans() {
   return (
     <>
-      <section className="input">
-        <section className="input__">
+    <section className="input">
+    <section className="input__">
           <div className="input__">
             <ul className="input__">
               <li className="input__">
@@ -17,6 +17,7 @@ function HomeLoans() {
             </ul>
           </div>
         </section>
+      <section className="input__body">
         <section className="input__box">
           <div className="input__">
             <label className="input__">Home Price</label>
@@ -44,9 +45,13 @@ function HomeLoans() {
             </div>
           </div>     
         </section>
-        <div>
+          <div>
             <DonutChart/>
           </div>
+      </section>
+      <section>
+        
+      </section>
       </section>
     </>
   );

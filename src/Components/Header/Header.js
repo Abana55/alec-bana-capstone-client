@@ -1,5 +1,6 @@
 import './Header.scss';
 import { NavLink, useLocation } from 'react-router-dom';
+import Logo from '../../assets/summa-high-resolution-logo-transparent.png';
 
 function Header() {
     const location = useLocation();
@@ -17,7 +18,9 @@ function Header() {
             <section className='header'>
                 <NavLink className='header__logo' to="/">
                 </NavLink>
-                <h2 className='header__title'>Summa</h2>
+                <NavLink className='header__logo' to="/">
+                    <img className='header__img' src={Logo} alt='header-Logo'></img>
+                </NavLink>
                 <div>
                     <ul className='header__links'>
                         <li>
