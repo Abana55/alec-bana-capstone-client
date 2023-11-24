@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Components/Header/Header';
 import HomePage from './pages/homepage/HomePage';
 import HomeLoans from "./Components/HomeLoans/HomeLoans";
+import AmortizationTable from "./Components/AmortizationTable/AmortizationTable";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage/>} />
             <Route path="/HomeLoans" element={<HomeLoans />} />
+            <Route path="/AmortizationTable" element={<AmortizationTable />} />
           </Routes>
     </BrowserRouter>
     </>

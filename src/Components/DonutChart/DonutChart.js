@@ -14,7 +14,7 @@ function Donut() {
         datasets: [
           {
             label: "My First Dataset",
-            data: [300, 59, 100],
+            data: [3, 59, 100],
             backgroundColor: [
               "rgb(255, 99, 132)",
               "rgb(54, 162, 235)",
