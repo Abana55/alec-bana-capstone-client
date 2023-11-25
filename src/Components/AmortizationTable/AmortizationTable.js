@@ -1,4 +1,4 @@
-import './AmortizationTable.scss';
+import "./AmortizationTable.scss";
 import React, { useState } from "react";
 import {
   CategoryScale,
@@ -13,64 +13,88 @@ import {
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  const lineChartOptions = {
-    responsive: true,
-    plugins: {
+const lineChartOptions = {
+  responsive: true,
+  plugins: {
+    title: {
+      display: true,
+      text: "Yearly Payment Breakdown",
+    },
+  },
+  scales: {
+    x: {
       title: {
+        color: "grey",
         display: true,
-        text: "Yearly Payment Breakdown",
+        text: "Years",
       },
     },
-    scales: {
-      x: {
-        title: {
-          color: "grey",
-          display: true,
-          text: "Years",
-        },
-      },
-      y: {
-        title: {
-          color: "grey",
-          display: true,
-          text: "$ Amount",
-        },
+    y: {
+      title: {
+        color: "grey",
+        display: true,
+        text: "$ Amount",
       },
     },
-  };
+  },
+};
 
+function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
+  // get function that retrieves from the backend
+  // function to populate the line chart
 
-function AmortizationTable() {
-    // get function that retrieves from the backend
-    // function to populate the line chart 
-
-    return(
-        <>
-        <div className="table table__warehouse">
-            <section>
-                
-                {/* line chart goes here */}
-            </section>
-            <table className="table__container table__container--warehouse">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Principal</th>
-                        <th>Interest</th>
-                        <th>Remaining Balance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* {data.map((data) => (
+  return (
+    <div>
+      <section className="amortization">
+        <Line width={500} height={500}
+          className=""
+          data={{
+            datasets: [
+              {
+                type: "line",
+                label: "Principal Paid",
+                borderColor: "rgb(54, 162, 235)",
+                data: loanDetails.yearlyPrincipalPaid,
+              },
+              {
+                type: "line",
+                label: "Interest Paid",
+                borderColor: "rgb(255, 99, 132)",
+                data: loanDetails.yearlyInterestPaid,
+              },
+              {
+                type: "line",
+                label: "Remaining Principal",
+                borderColor: "purple",
+                data: loanDetails.yearlyRemainingPrincipal,
+              },
+            ],
+            labels: loanDetails.years,
+          }}
+          options={lineChartOptions}
+        />
+        {/* line chart goes here */}
+      </section>
+      <table className="table__container table__container--warehouse">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Remaining Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* {data.map((data) => (
                         <tr key={data.id}>
                             <td className="table__position1">
                                 <NavLink to={`/Amortization/${data.id}`} className="blue-text"><p>Payment Breakdown</p>
@@ -83,14 +107,13 @@ function AmortizationTable() {
                             <td className="table__position5"><p>Remaining Balance:</p>{data.remainingBalance}</td>
                         </tr>
                     ))} */}
-                </tbody>
-            </table>
-            {/* <section className='table__modal'>
+        </tbody>
+      </table>
+      {/* <section className='table__modal'>
                 {deleteModal && <DeleteWarehouse openDelete={setDeleteModal} warehouse={selectedWarehouse} />}
             </section> */}
-        </div>
-        </>
-    )
+    </div>
+  );
 }
 
 export default AmortizationTable;
