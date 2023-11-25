@@ -94,20 +94,17 @@ function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
           </tr>
         </thead>
         <tbody>
-          {/* {data.map((data) => (
-                        <tr key={data.id}>
-                            <td className="table__position1">
-                                <NavLink to={`/Amortization/${data.id}`} className="blue-text"><p>Payment Breakdown</p>
-                                    {data.}
-                                </NavLink>
-                            </td>
-                            <td className="table__position2"><p>Date:</p>{data.date}</td>
-                            <td className="table__position3"><p>Principal:</p>{data.principal}</td>
-                            <td className="table__position4"><p>Interest:</p>{data.interest}</td>
-                            <td className="table__position5"><p>Remaining Balance:</p>{data.remainingBalance}</td>
-                        </tr>
-                    ))} */}
-        </tbody>
+    {/* {loanDetails.map((loanDetail) => (
+        <tr key={loanDetail.id}>
+            <td className="table__position1">
+            </td>
+            <td className="table__position2"><p>Date: {loanDetail.date}</p></td>
+            <td className="table__position3"><p>Principal: {loanAmount.principal}</p></td>
+            <td className="table__position4"><p>Interest: {loanDetail.interest}</p></td>
+            <td className="table__position5"><p>Remaining Balance: {downPaymentAmount.remainingBalance}</p></td>
+        </tr> */}
+    {/* ))} */}
+</tbody>
       </table>
       {/* <section className='table__modal'>
                 {deleteModal && <DeleteWarehouse openDelete={setDeleteModal} warehouse={selectedWarehouse} />}
