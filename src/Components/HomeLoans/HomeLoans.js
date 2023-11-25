@@ -102,13 +102,9 @@ function HomeLoans() {
     setLoanDetails(res.data)
     
   }
-  // const handleLoanDetails2 = (handleSubmit) => {
-  //   loanDetails2(res.data)
-  // }
   
-
   return (
-    <>
+    
       <section className="input">
         <section className="input__">
           <h1 className="input__title">Mortgage Calculator</h1>
@@ -204,7 +200,6 @@ function HomeLoans() {
           )}
           </section>
       </section>
-    </>
   );
 }
 

@@ -49,8 +49,7 @@ const lineChartOptions = {
 };
 
 function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
-  // get function that retrieves from the backend
-  // function to populate the line chart
+
 
   return (
     <div>
