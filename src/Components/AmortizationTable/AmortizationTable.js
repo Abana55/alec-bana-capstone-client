@@ -63,18 +63,33 @@ function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
                 label: "Principal Paid",
                 borderColor: "rgb(54, 162, 235)",
                 data: loanDetails.yearlyPrincipalPaid,
+                tension: 0.1,
+                borderWidth: 3,
+                pointRadius: 0,
+                pointHoverRadius: 1
+
               },
               {
                 type: "line",
                 label: "Interest Paid",
                 borderColor: "rgb(255, 99, 132)",
                 data: loanDetails.yearlyInterestPaid,
+                tension: 0.1,
+                borderWidth: 3,
+                pointRadius: 0,
+                pointHoverRadius: 1
+
               },
               {
                 type: "line",
                 label: "Remaining Principal",
                 borderColor: "purple",
                 data: loanDetails.yearlyRemainingPrincipal,
+                tension: 0.5,
+                borderWidth: 3,
+                pointRadius: 0,
+                pointHoverRadius: 1
+
               },
             ],
             labels: loanDetails.years,
@@ -92,8 +107,8 @@ function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
             <th>Remaining Balance</th>
           </tr>
         </thead>
-        <tbody>
-    {/* {loanDetails.map((loanDetail) => (
+        {/* <tbody>
+    {loanDetails.map((loanDetail) => (
         <tr key={loanDetail.id}>
             <td className="table__position1">
             </td>
@@ -101,9 +116,9 @@ function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
             <td className="table__position3"><p>Principal: {loanAmount.principal}</p></td>
             <td className="table__position4"><p>Interest: {loanDetail.interest}</p></td>
             <td className="table__position5"><p>Remaining Balance: {downPaymentAmount.remainingBalance}</p></td>
-        </tr> */}
-    {/* ))} */}
-</tbody>
+        </tr> 
+     ))}
+</tbody> */}
       </table>
       {/* <section className='table__modal'>
                 {deleteModal && <DeleteWarehouse openDelete={setDeleteModal} warehouse={selectedWarehouse} />}

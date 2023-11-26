@@ -1,29 +1,33 @@
 import React, { useState } from "react";
 import "./DonutChart.scss";
 import { Doughnut } from "react-chartjs-2";
+import PaymentBreakdown from "../PaymentBreakDown/PaymentBreakDown";
 
 
-function Donut({ loanAmount, downPaymentAmount, loanDetails }) {
-  const PaymentBreakdown = ({ monthlyPayment }) => {
-    const [propertyTax, setPropertyTax] = useState(0);
-    const handlePropertyTaxChange = (event) => {
-      setPropertyTax(Number(event.target.value));
-    }
-  }
+function Donut({ loanDetails }) {
+  const [propertyTax, setPropertyTax] = useState(0);
+
+  const handlePropertyTaxChange = (event) => {
+    setPropertyTax(Number(event.target.value));
+  };
+
+  const monthlyPayment = loanDetails.monthlyPayment || 0;
+
   return (
     <div className="donut">
       <Doughnut
         data={{
-          labels: ["Principal", "Interest", "Property Tax"],
+          labels: ["Monthly Payment", "Property Tax"],
           datasets: [
             {
               label: "Monthly Payment Breakdown",
               data: [
-                loanAmount - downPaymentAmount,
-                loanDetails.totalInterestPaid,
+                monthlyPayment, propertyTax
               ],
               backgroundColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)"],
-              hoverOffset: 4,
+              hoverOffset: 100,
+              borderWidth:10,
+              
             },
           ],
         }}
@@ -36,6 +40,7 @@ function Donut({ loanAmount, downPaymentAmount, loanDetails }) {
           },
         }}
       />
+      <PaymentBreakdown/>
     </div>
   );
 }
