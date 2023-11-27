@@ -4,23 +4,25 @@
 .modal {
     &__box {        
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         background-color: #3D3839;
+        height: 30vh;
+        width: 30vw;
         // padding: $mobile-padding-left-right;
 
         @include tablet {
             background-color: $primary-white;
-            // padding: $tablet-padding-left-right;
-            // position: absolute;
+            padding: $tablet-padding-left-right;
+            position: absolute;
             margin: auto;
             width: 70%;
             padding-bottom: 10%;
             top: 30%;
         }
         @include desktop {
-            // background-color: $primary-white;
-            // padding: $desktop-padding-left-right;
-            // position: absolute;
+            background-color: $primary-white;
+            padding: $desktop-padding-left-right;
+            position: absolute;
             top: 5rem;
         }
     }
@@ -29,14 +31,19 @@
         color: #FFC604;
     }
     &__background {
-        background-color: rgba($color: $primary-black, $alpha: 0.5);
-        // position: relative;
+        background-color: rgba($color: black, $alpha: 0.5);
+        position: relative;
         top: 0rem;
         right: 0rem;
         bottom: 0rem;
         left: 0rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         position: fixed;
+        padding: 5rem;
     }
+}
+.model-content {
+    background-color: white;
 }

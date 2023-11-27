@@ -106,19 +106,21 @@ function HomeLoans() {
   return (
     
       <section className="input">
-        <section className="input__">
+        <section className="input__top-box">
           <h1 className="input__title">Mortgage Calculator</h1>
           <div className="input__">
-            <ul className="input__">
+            <ul className="input__list">
               <li className="input__">
-                <button 
+                <button
+                variant="outline-secondary" 
                 className="input__button "
                 onClick={handleDonutButtonClick}
-
                 >Payment Breakdown</button>
               </li>
               <li className="input__">
-                <button className="input__"
+                <button 
+                variant="outline-secondary"
+                className="input__button"
                 onClick={handleLineButtonClick}
                 >Amortization chart</button>
               </li>

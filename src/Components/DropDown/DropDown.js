@@ -22,14 +22,14 @@ function NavModal() {
           <Modal.Header className='modal__button' closeButton>
             <Modal.Title className='modal__title'>Summa</Modal.Title>
           </Modal.Header>
-          <Modal.Body className='modal__'y>
-            <button>Mortgage Calculator</button>
+          <Modal.Body className='modal__'>
+            <button className='modal__button'>Mortgage Calculator</button>
           </Modal.Body>
           <Modal.Footer className='modal__'>
-            <Button className='modal__' variant="secondary" onClick={handleClose}>
+            <Button className='modal__button' variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button className='modal__' variant="primary" onClick={handleClose}>
+            <Button className='modal__button' variant="primary" onClick={handleClose}>
               HomeLoans
             </Button>
           </Modal.Footer>
