@@ -2,5 +2,9 @@
 @use '../../styles/mixins' as *;
 
 .donut {
-    height: 45vh;
+    height: 60vh;
+    &__total {
+        display: flex;
+        flex-direction: column;
+    }
 }

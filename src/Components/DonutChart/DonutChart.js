@@ -21,19 +21,21 @@ function Donut({ loanDetails }) {
   return (
     <div className="donut">
       <div>
-        <label>Total Monthly Payment: {Math.round(totalMonthlyPayments)}</label>
-        <label>
+        <label className="donut__total">Total Monthly Payment: {Math.round(totalMonthlyPayments)}</label>
+        <label className="donut__input">
           PropertyTax:
           <input
+          className="donut__form"
           type="number"
           value={propertyTax}
           onChange={handlePropertyTaxChange}
           min={0}
           />
         </label>
-        <label>
+        <label className="donut__input">
           Homeowner's Insurance:
           <input
+          className="donut__form"
           type="number"
           value={homeownersInsurance}
           onChange={handleHomeownersChange}

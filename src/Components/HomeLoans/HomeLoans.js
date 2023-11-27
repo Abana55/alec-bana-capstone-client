@@ -132,11 +132,11 @@ function HomeLoans() {
           className="input__box"
           onSubmit={handleSubmit}
           >
-            <div className="input__">
+            <div className="input__form-box">
               <label className="input__">Home Price:</label>
               <div className="input__">
                 <input
-                  className="input__"
+                  className="input__input"
                   value={loanAmount}
                   type="number"
                   min={0}
@@ -144,11 +144,11 @@ function HomeLoans() {
                 />
               </div>
             </div>
-            <div className="input__">
+            <div className="input__form-box">
               <label className="input__">Down Payment:</label>
               <div className="input__">
                 <input
-                  className="input__"
+                  className="input__input"
                   value={downPaymentAmount}
                   onChange={handleDownPaymentAmountChange}
                   type="number"
@@ -156,11 +156,12 @@ function HomeLoans() {
                 />
               </div>
             </div>
-            <div className="input__">
+            <div className="input__form-box">
               {/*here is the dropdown to pick between 30/15/10/5 years */}
-              <label className="input__">
+              <label className="input__option">
                 Loan Term
                 <select
+                  className="input__input"
                   value={loanTerm}
                   onChange={handleLoanTermChange}
                   defaultValue={loanTerm}
@@ -172,10 +173,11 @@ function HomeLoans() {
                 </select>
               </label>
             </div>
-            <div className="input__">
+            <div className="input__form-box">
               <label>
                 Interest Rate:
                 <input
+                  className="input__input"
                   value={interestRate}
                   onChange={handleInterestRateChange}
                   type="number"

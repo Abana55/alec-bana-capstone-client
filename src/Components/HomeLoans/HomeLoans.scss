@@ -31,10 +31,15 @@
     &__list {
         list-style: none;
         display: flex;
+        margin-bottom: 0;
     }
-    &__button {
+    &__list :hover{
         background-color:#3D3839 ;
         color: white;
+    }
+    &__button {
+        background-color: white;
+        color: #3D3839;
         font-size: 1rem;
         border-radius: .4rem;
         border-style: none;
@@ -42,6 +47,25 @@
         margin-right: 1rem;
         margin-top: 1rem;
     }   
+    &__form-box {
+        padding: .25rem;
+        display: flex;
+        flex-direction: column;
+
+    }
+    &__box {
+        padding: 0;
+    }
+    &__option {
+        display: flex;
+        flex-direction: column;
+
+    }
+    &__input {
+        margin-top: .5rem;
+        padding: .25rem;
+        font-size: 1rem;
+    }
     
 
 }
