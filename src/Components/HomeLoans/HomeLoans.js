@@ -168,7 +168,7 @@ function HomeLoans() {
                 >
                   <option value={5}>5 Years</option>
                   <option value={10}>10 Years</option>
-                  <option value={15}>15Years</option>
+                  <option value={15}>15 Years</option>
                   <option value={30}>30 Years</option>
                 </select>
               </label>
@@ -200,6 +200,7 @@ function HomeLoans() {
             loanAmount={loanAmount}
             loanDetails={loanDetails}
             downPaymentAmount={downPaymentAmount}
+            // totalInterestPaid={totalInterestPaid}
             />
           )}
           </section>

@@ -48,12 +48,16 @@ const lineChartOptions = {
   },
 };
 
-function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails }) {
+function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails, totalInterestPaid }) {
 
 
   return (
     <div>
       <section className="amortization">
+        <h2>Amortization costs</h2>
+        <p>Principal: {}</p>
+        <p>Interest: {}</p>
+        <p>total cost of loan:</p>
         <Line width={500} height={500}
           className=""
           data={{

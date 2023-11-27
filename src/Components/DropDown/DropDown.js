@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { NavLink, useLocation } from 'react-router-dom';
 import HomeLoans from "../HomeLoans/HomeLoans";
+import autoLoans from "../../pages/autoLoans/autoloans";
 
 
 function NavModal() {
@@ -31,6 +32,20 @@ function NavModal() {
           </Modal.Header>
           <Modal.Body className="modal__">
             <button className="modal__button">Mortgage Calculator</button>
+            <button>
+            <NavLink
+                to="/Homeloans"
+                className={`${HomeLoans() ? "active" : ""}`}
+              >
+                Mortgage Loans
+              </NavLink>
+              </button>
+              <NavLink
+                to="/autoLoans"
+                className={`${autoLoans() ? "active" : ""}`}
+              >
+                Auto Loans
+              </NavLink>
           </Modal.Body>
           <Modal.Footer className="modal__">
             <Button
@@ -45,12 +60,6 @@ function NavModal() {
               variant="primary"
               onClick={handleClose}
             >
-              <NavLink
-                to="/Homeloans"
-                className={`${HomeLoans() ? "active" : ""}`}
-              >
-                Mortgage Calculator
-              </NavLink>
             </Button>
           </Modal.Footer>
         </section>

@@ -5,11 +5,16 @@
     &__box {        
         display: flex;
         flex-direction: row;
-        background-color: #3D3839;
+        background-color: white;
         height: 30vh;
         width: 60vw;
-        
         border-radius: 4px;
+        position: relative;
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        top: 0rem;
+        right: 0rem;
+        bottom: 0rem;
+        left: 0rem;
         // padding: $mobile-padding-left-right;
 
         @include tablet {
@@ -33,12 +38,9 @@
         color: #FFC604;
     }
     &__background {
-        background-color: rgba($color: black, $alpha: 0.5);
-        position: relative;
-        top: 0rem;
-        right: 0rem;
-        bottom: 0rem;
-        left: 0rem;
+        // background-color: rgba($color: black, $alpha: 0.5);
+        
+        
         display: flex;
         flex-direction: column;
         justify-content: center;
