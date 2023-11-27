@@ -56,7 +56,7 @@ function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails, totalIn
       <section className="amortization">
         <h2>Amortization costs</h2>
         <p>Principal: {}</p>
-        <p>Interest: {}</p>
+        <p>Interest: {Math.round(loanDetails.yearlyInterestPaid)}</p>
         <p>total cost of loan:</p>
         <Line width={500} height={500}
           className=""

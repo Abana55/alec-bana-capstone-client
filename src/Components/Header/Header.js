@@ -1,19 +1,9 @@
 import './Header.scss';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from '../../assets/summa-high-resolution-logo-transparent.png';
-import HomeLoans from '../HomeLoans/HomeLoans';
 import NavModal from '../DropDown/DropDown';
 
 function Header() {
-    const location = useLocation();
-
-    const warehouseIsActive = () => {
-        return location.pathname === '/' || location.pathname.startsWith('/warehouses');
-    };
-
-    const inventoryIsActive = () => {
-        return location.pathname.startsWith('/inventory');
-    };
 
     return (
         <header>
@@ -25,11 +15,11 @@ function Header() {
                 </NavLink>
                 <div>
                     <ul className='header__links'>
-                        <li>
-                            <NavLink to='/' className={` ${warehouseIsActive() ? 'active' : ''}`}>
+                        <button>
+                            <NavLink to='/' className={` [] ? 'active' : ''}`}>
                                 Login
                             </NavLink>
-                        </li>
+                        </button>
                         {/* <li>
                             <NavLink to='/Homeloans' className={`${HomeLoans() ? 'active' : ''}`}>
                                 Calculators
