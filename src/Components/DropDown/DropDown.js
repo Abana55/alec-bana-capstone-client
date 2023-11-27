@@ -1,43 +1,42 @@
-import X from '../../assets/icons/close-24px.svg'
-import axios from 'axios';
 import './DropDown.scss';
+import * as React from 'react';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 
 
-function NavModal({ openDelete, inventory }) {
-    let deleteInventory = async () => {
-        try {
-            await axios.delete(`http://localhost:8081/api/inventories/${inventory.id}`);
-            openDelete(false);
-            window.location.reload();
-        }
-        catch (error) {
-            console.error(error);
-        }
-    };
+function NavModal() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
-        <section className='delete-inventory__background'>
-        <div className='delete-inventory__container'>
-            <div className='delete-inventory__close-button'>
-                <img src={X} alt='X to cancel out of delete' onClick={() => { openDelete(false); }}>
-                </img>
-            </div>
-            <div className='delete-inventory__header'>
-                {`Delete ${inventory.item_name} inventory?`}
-            </div>
-            <div className='delete-inventory__buttons-bottom'>
-                <div className='delete-inventory__buttons'>
-                    <button className='delete-inventory__buttons-cancel' onClick={() => { openDelete(false); }}>
-                        Cancel
-                    </button>
-                    <button className='delete-inventory__buttons-delete'
-                        onClick={deleteInventory}>
-                        Delete
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+        <>
+        <Button variant="primary" onClick={handleShow}>
+          Calculators
+        </Button>
+    
+        <Modal className='modal__box' show={show} onHide={handleClose} animation={false}>
+          <section className='modal__background'>  
+          <Modal.Header className='modal__button' closeButton>
+            <Modal.Title className='modal__title'>Summa</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='modal__'y>
+            <button>Mortgage Calculator</button>
+          </Modal.Body>
+          <Modal.Footer className='modal__'>
+            <Button className='modal__' variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button className='modal__' variant="primary" onClick={handleClose}>
+              HomeLoans
+            </Button>
+          </Modal.Footer>
+        </section>  
+        </Modal>
+    
+      </>
     );
 }
 

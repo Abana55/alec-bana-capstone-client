@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.modal {
+    &__box {        
+        display: flex;
+        flex-direction: column;
+        background-color: #3D3839;
+        // padding: $mobile-padding-left-right;
+
+        @include tablet {
+            background-color: $primary-white;
+            // padding: $tablet-padding-left-right;
+            // position: absolute;
+            margin: auto;
+            width: 70%;
+            padding-bottom: 10%;
+            top: 30%;
+        }
+        @include desktop {
+            // background-color: $primary-white;
+            // padding: $desktop-padding-left-right;
+            // position: absolute;
+            top: 5rem;
+        }
+    }
+    &__title {
+        font-size: 2.25rem;
+        color: #FFC604;
+    }
+    &__background {
+        background-color: rgba($color: $primary-black, $alpha: 0.5);
+        // position: relative;
+        top: 0rem;
+        right: 0rem;
+        bottom: 0rem;
+        left: 0rem;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+    }
+}

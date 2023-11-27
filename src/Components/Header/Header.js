@@ -2,6 +2,7 @@ import './Header.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import Logo from '../../assets/summa-high-resolution-logo-transparent.png';
 import HomeLoans from '../HomeLoans/HomeLoans';
+import NavModal from '../DropDown/DropDown';
 
 function Header() {
     const location = useLocation();
@@ -34,6 +35,7 @@ function Header() {
                                 Calculators
                             </NavLink>
                         </li>
+                        <NavModal/>
                         
                     </ul>
                 </div>
