@@ -34,18 +34,21 @@
         margin-bottom: 0;
     }
     &__list :hover{
-        background-color:#3D3839 ;
-        color: white;
+        border-bottom: 3px #FFC604;
+        background-color: #f7f8f9;
     }
     &__button {
-        background-color: white;
-        color: #3D3839;
+        margin-bottom: 1rem;
         font-size: 1rem;
         border-radius: .4rem;
         border-style: none;
         padding: .25rem;
         margin-right: 1rem;
         margin-top: 1rem;
+        background-color: #f7f8f9;
+    }
+    &__button :hover {
+        border-bottom: 1rem #FFC604;
     }   
     &__form-box {
         padding: .25rem;

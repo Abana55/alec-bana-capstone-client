@@ -30,11 +30,11 @@ function Header() {
                                 Login
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink to='/Homeloans' className={`${HomeLoans() ? 'active' : ''}`}>
                                 Calculators
                             </NavLink>
-                        </li>
+                        </li> */}
                         <NavModal/>
                         
                     </ul>

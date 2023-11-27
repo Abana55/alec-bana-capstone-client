@@ -7,7 +7,9 @@
         flex-direction: row;
         background-color: #3D3839;
         height: 30vh;
-        width: 30vw;
+        width: 60vw;
+        
+        border-radius: 4px;
         // padding: $mobile-padding-left-right;
 
         @include tablet {
