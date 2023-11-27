@@ -35,8 +35,8 @@ function PaymentBreakdown ({monthlyPayment}) {
           }}
         />
       </div>
-      <div className="added-payments">
-        <label>Principal &interest - {Math.round(monthlyPayment)}</label>
+      <form className="added-payments">
+        <label>Principal & interest - {Math.round(monthlyPayment)}</label>
         <label>
           Property Tax:
           <input
@@ -46,7 +46,7 @@ function PaymentBreakdown ({monthlyPayment}) {
           min={0} 
           />
         </label>
-      </div>
+      </form>
       </>
 )}
 
