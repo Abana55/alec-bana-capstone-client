@@ -3,8 +3,8 @@ import "./DonutChart.scss";
 import { Doughnut } from "react-chartjs-2";
 
 function Donut({ loanDetails }) {
-  const [propertyTax, setPropertyTax] = useState(0);
-  const [homeownersInsurance, setHomeownersInsurance] = useState(0);
+  const [propertyTax, setPropertyTax] = useState(350);
+  const [homeownersInsurance, setHomeownersInsurance] = useState(350);
 
   const handleHomeownersChange = (event) => {
     setHomeownersInsurance(Number(event.taget.value));

@@ -1,6 +1,7 @@
 import './Header.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import Logo from '../../assets/summa-high-resolution-logo-transparent.png';
+import HomeLoans from '../HomeLoans/HomeLoans';
 
 function Header() {
     const location = useLocation();
@@ -24,15 +25,16 @@ function Header() {
                 <div>
                     <ul className='header__links'>
                         <li>
-                            <NavLink to='/' className={`header__links-warehouses ${warehouseIsActive() ? 'active' : ''}`}>
+                            <NavLink to='/' className={` ${warehouseIsActive() ? 'active' : ''}`}>
                                 Login
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='/inventory' className={`header__links-inventory ${inventoryIsActive() ? 'active' : ''}`}>
+                            <NavLink to='/Homeloans' className={`${HomeLoans() ? 'active' : ''}`}>
                                 Calculators
                             </NavLink>
                         </li>
+                        
                     </ul>
                 </div>
             </section>
