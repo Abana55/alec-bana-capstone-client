@@ -4,7 +4,8 @@ import Header from './Components/Header/Header';
 import HomePage from './pages/homepage/HomePage';
 import HomeLoans from "./Components/HomeLoans/HomeLoans";
 import AmortizationTable from "./Components/AmortizationTable/AmortizationTable";
-import autolLoans from "./pages/autoLoans/autoloans";
+import AutolLoans from "./pages/autoLoans/autoloans";
+import Footer from "./Components/footer/Footer";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
             <Route path="/" element={<HomePage/>} />
             <Route path="/HomeLoans" element={<HomeLoans />} />
             <Route path="/AmortizationTable" element={<AmortizationTable />} />
-            <Route path="/autoLoans" element={<autoLoans />} />
+            <Route path="/AutoLoans" element={<AutolLoans />} />
           </Routes>
+          <Footer/>
     </BrowserRouter>
     </>
     

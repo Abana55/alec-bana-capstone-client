@@ -25,7 +25,7 @@ function Donut({ loanDetails }) {
 
   return (
     <div className="donut">
-      <div>
+      <div className="donut__form-box">
         <label className="donut__total">Total Monthly Payment: {Math.round(totalMonthlyPayments)}</label>
         <label className="donut__input">
           PropertyTax:
@@ -59,6 +59,9 @@ function Donut({ loanDetails }) {
         </label>
       </div>
       <Doughnut
+      className="donut__chart"
+      height={400}
+      width={400}
         data={{
           labels: ["Monthly Payment", "Property Tax", "Homeowner's insurance", "Hoa Fee's"],
           datasets: [
@@ -67,7 +70,7 @@ function Donut({ loanDetails }) {
               data: [
                 monthlyPayment, propertyTax, homeownersInsurance, hoaFee
               ],
-              backgroundColor: ["rgb(0, 0, 235)", "rgb(255, 0, 0)", "rgb(0, 200, 0", "rgb(100, 100, 100)"],
+              backgroundColor: ["black", "gold", "grey", "silver"],
               hoverOffset: 100,
               borderWidth:3,
               

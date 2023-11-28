@@ -46,52 +46,78 @@ const lineChartOptions = {
       },
     },
   },
+  legend: {
+    name: 'Position: left',
+    handler(chart) {
+      chart.options.plugins.legend.position = 'left';
+      chart.update();
+    }
+  },
 };
 
 function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails, totalInterestPaid }) {
+const [totalCost, setTotalCost] = useState({});
+
+const handleTotalCost = (event) => {
+  setTotalCost(Number(event.target.value));
+  const totalCosts = totalInterestPaid + loanAmount;
+
+}
+
+console.log('LOOK HERE: ',loanDetails)
+
+// function currencyFormat(num) {
+//   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+// 
 
 
   return (
     <div>
       <section className="amortization">
-        <h2>Amortization costs</h2>
-        <p>Principal: {}</p>
-        <p>Interest: {Math.round(loanDetails.yearlyInterestPaid)}</p>
-        <p>total cost of loan:</p>
-        <Line width={500} height={500}
-          className=""
+        <h2 className="amortization__title">Amortization costs</h2>
+        <div className="amortization__sub-title-box">
+          <div className="amortization__p-box">
+            <p className="amortization__sub-title">Principal: </p>
+            <p>{loanDetails.loanAmount}</p>
+          </div>
+          <p className="amortization__sub-title">Interest: {loanDetails.totalInterestPaid}</p>
+          <p className="amortization__sub-title">Total cost of loan: {loanDetails.totalCost}</p>
+        </div>
+        <Line width={300} height={300}
+          className="amortization__chart"
           data={{
             datasets: [
               {
                 type: "line",
                 label: "Principal Paid",
-                borderColor: "rgb(54, 162, 235)",
+                borderColor: "offwhite",
                 data: loanDetails.yearlyPrincipalPaid,
                 tension: 0.1,
                 borderWidth: 3,
-                pointRadius: 0,
-                pointHoverRadius: 1
+                pointRadius: 2,
+                pointHoverRadius: 1,
+                usePointStyle: true,
 
               },
               {
                 type: "line",
                 label: "Interest Paid",
-                borderColor: "rgb(255, 99, 132)",
+                borderColor: "grey",
                 data: loanDetails.yearlyInterestPaid,
                 tension: 0.1,
                 borderWidth: 3,
-                pointRadius: 0,
+                pointRadius: 2,
                 pointHoverRadius: 1
 
               },
               {
                 type: "line",
                 label: "Remaining Principal",
-                borderColor: "purple",
+                borderColor: "gold",
                 data: loanDetails.yearlyRemainingPrincipal,
                 tension: 0.5,
                 borderWidth: 3,
-                pointRadius: 0,
+                pointRadius: 1,
                 pointHoverRadius: 1
 
               },
@@ -111,22 +137,20 @@ function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails, totalIn
             <th>Remaining Balance</th>
           </tr>
         </thead>
-        {/* <tbody>
-    {loanDetails.map((loanDetail) => (
-        <tr key={loanDetail.id}>
-            <td className="table__position1">
+        
+        <tbody>
+    {loanDetails ? loanDetails.yearlyInterestPaid.map((loanDetails) => (
+        <tr key={loanDetails.id}>
+            <td className="table__position">
             </td>
-            <td className="table__position2"><p>Date: {loanDetail.date}</p></td>
-            <td className="table__position3"><p>Principal: {loanAmount.principal}</p></td>
-            <td className="table__position4"><p>Interest: {loanDetail.interest}</p></td>
-            <td className="table__position5"><p>Remaining Balance: {downPaymentAmount.remainingBalance}</p></td>
+            <td className="table__position"><p>Date: {loanDetails}</p></td>
+            <td className="table__position"><p>Principal: {loanDetails.yearlyPrincipalPaid}</p></td>
+            <td className="table__position"><p>Interest: {loanDetails.yearlyInterestPaid}</p></td>
+            <td className="table__position"><p>Remaining Balance: {loanDetails.yearlyRemainingPrincipal}</p></td>
         </tr> 
-     ))}
-</tbody> */}
+     )) : <div>loading</div>}
+</tbody>
       </table>
-      {/* <section className='table__modal'>
-                {deleteModal && <DeleteWarehouse openDelete={setDeleteModal} warehouse={selectedWarehouse} />}
-            </section> */}
     </div>
   );
 }

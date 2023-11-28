@@ -2,7 +2,10 @@
 @use '../../styles/mixins' as *;
 
 .donut {
-    height: 60vh;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+
     &__total {
         display: flex;
         flex-direction: column;
@@ -11,6 +14,13 @@
     &__input {
         display: flex;
         flex-direction: column;
+    }
+    &__chart {
+        height: 25vh;
+        width: 25vw;
+    }
+    &__form {
+        font-size: 1.25rem;
     }
 }
 // canvas {
