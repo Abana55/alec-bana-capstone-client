@@ -2,8 +2,7 @@ import './MoneyInflation.scss';
 import React, { useState } from "react";
 
 function InflationCalculator() {
-    
-    return(
+
   const [initialAmount, setInitialAmount] = useState(1000);
   const [initialYear, setInitialYear] = useState(2020);
   const [targetYear, setTargetYear] = useState(2025);
@@ -41,7 +40,6 @@ function InflationCalculator() {
     </div>
   );
 };
-    )
-}
+
 
 export default InflationCalculator;
