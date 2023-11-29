@@ -39,13 +39,39 @@
     }
     &__background {
         // background-color: rgba($color: black, $alpha: 0.5);
-        
-        
         display: flex;
         flex-direction: column;
         justify-content: center;
         position: fixed;
         padding: 5rem;
+        width: 40vw;
+    }
+    &__body {
+        display: flex;
+        justify-content: space-between;
+
+    }
+    &__calc {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    &__drop {
+        padding: .3rem;
+        border-radius: .3rem;
+        border-style: none;
+        width: 10vw;
+        background-color: white;
+        margin-left: 1rem;
+    }
+    &__drop :hover {
+        background-color: #FFC604;
+        color: #3D3839;
+    }
+    &__box {
+        width: 70vw;
+        display: flex;
+        align-items: flex-end;
     }
 }
 .model-content {

@@ -6,6 +6,7 @@ import HomeLoans from "./Components/HomeLoans/HomeLoans";
 import AmortizationTable from "./Components/AmortizationTable/AmortizationTable";
 import AutolLoans from "./pages/autoLoans/autoloans";
 import Footer from "./Components/footer/Footer";
+import InflationCalculator from "./pages/money-inflation/MoneyInflation";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/HomeLoans" element={<HomeLoans />} />
             <Route path="/AmortizationTable" element={<AmortizationTable />} />
             <Route path="/AutoLoans" element={<AutolLoans />} />
+            <Route path="/InflationCalulator" element={<InflationCalculator />} />
           </Routes>
           <Footer/>
     </BrowserRouter>

@@ -71,7 +71,7 @@ function Donut({ loanDetails }) {
                 monthlyPayment, propertyTax, homeownersInsurance, hoaFee
               ],
               backgroundColor: ["black", "gold", "grey", "silver"],
-              hoverOffset: 100,
+              hoverOffset: 1,
               borderWidth:3,
               
             },

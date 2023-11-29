@@ -1,6 +1,6 @@
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
-import Logo from '../../assets/summa-high-resolution-logo-transparent.png';
+import Logo from '../../assets/summa-high-resolution-logo-white-transparent.png';
 import NavModal from '../DropDown/DropDown';
 
 function Header() {
@@ -13,9 +13,9 @@ function Header() {
                 <NavLink className='header__logo' to="/">
                     <img className='header__img' src={Logo} alt='header-Logo'></img>
                 </NavLink>
-                <div>
+                <div className="header__box">
                     <ul className='header__links'>
-                        <button>
+                        <button className='header__login'>
                             <NavLink to='/' className={` [] ? 'active' : ''}`}>
                                 Login
                             </NavLink>
@@ -25,7 +25,7 @@ function Header() {
                                 Calculators
                             </NavLink>
                         </li> */}
-                        <NavModal/>
+                        <NavModal className="header__drop"/>
                         
                     </ul>
                 </div>

@@ -3,6 +3,7 @@
 
 * {
     font-family: serif;
+    color: white;
     background-image: '../../assets/low-poly-abstract-white-golden-lines-background_1017-26507.avif';
 }
 .input {
@@ -10,13 +11,14 @@
         font-size: 1.5rem;
     }
     &__body {
-        width: 90%;
-        margin-inline: auto;
+        margin-left: 3rem;
         background-color: #f7f8f9;
-        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
         display: flex;
         justify-content: space-around;
         border-top: .15rem solid #FFC604;
+        border-radius: .25rem;
+        margin-right: 2rem;
 
     }
     // &__button {
@@ -24,8 +26,13 @@
     // }
     &__title {
         padding-left: 4rem;
-        color: #3D3839;
-        font-size: 4rem;
+        color: white;
+        font-size: 3rem;
+        background-color: #3D3839;
+        margin: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
     }
     &__under-title {
         border-top: 2px solid #3D3839;
@@ -40,6 +47,10 @@
         display: flex;
         margin-bottom: 0;
         justify-content: flex-end;
+        background-color: #121212;
+        margin-top: 0;
+        box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
+
 
     }
     &__list :hover{
@@ -69,7 +80,9 @@
         padding: 0;
         width: 45vw;
         margin-left: 2rem;
-        border-left: 1px solid #FFC604;
+        box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
+        background-color: #3D3839;
+
 
     }
     &__option {
@@ -90,6 +103,7 @@
     &__contains {
         display: flex;
         padding-bottom: 1rem;
+        background-color: #121212;
     }
     
 

@@ -6,7 +6,7 @@ function InflationCalculator() {
   const [initialAmount, setInitialAmount] = useState(1000);
   const [initialYear, setInitialYear] = useState(2020);
   const [targetYear, setTargetYear] = useState(2025);
-  const [inflationRate, setInflationRate] = useState(2); // Example inflation rate
+  const [inflationRate, setInflationRate] = useState(2); 
 
   const calculateAdjustedValue = () => {
     const yearsDifference = targetYear - initialYear;
@@ -15,6 +15,7 @@ function InflationCalculator() {
   };
 
   return (
+    <>
     <div>
       <h2>Inflation Calculator</h2>
       <div>
@@ -38,6 +39,7 @@ function InflationCalculator() {
         <p>Adjusted Value: ${calculateAdjustedValue()}</p>
       </div>
     </div>
+    </>
   );
 };
 

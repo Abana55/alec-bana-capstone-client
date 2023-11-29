@@ -2,9 +2,12 @@
 @use '../../styles/mixins' as *;
 
 .donut {
-    height: auto;
+
     display: flex;
     flex-direction: row-reverse;
+    background-color: #3D3839;
+    height: 70vh;
+
 
     &__total {
         display: flex;
@@ -15,10 +18,7 @@
         display: flex;
         flex-direction: column;
     }
-    &__chart {
-        height: 25vh;
-        width: 25vw;
-    }
+
     &__form {
         font-size: 1.25rem;
     }

@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { NavLink, useLocation } from 'react-router-dom';
 import HomeLoans from "../HomeLoans/HomeLoans";
 import autoLoans from "../../pages/autoLoans/autoloans";
+import InflationCalculator from "../../pages/money-inflation/MoneyInflation";
 
 
 function NavModal() {
@@ -16,7 +17,10 @@ function NavModal() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button 
+      className="modal__drop"
+      variant="primary" 
+      onClick={handleShow}>
         Calculators
       </Button>
 
@@ -30,8 +34,11 @@ function NavModal() {
           <Modal.Header className="modal__button" closeButton>
             <Modal.Title className="modal__title">Summa</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="modal__">
-            <button className="modal__button">Mortgage Calculator</button>
+          <Modal.Body className="modal__body">
+            <section>
+              <h3>API-1</h3>
+            </section>
+            <section className="modal__calc">
             <button>
             <NavLink
                 to="/Homeloans"
@@ -46,6 +53,13 @@ function NavModal() {
               >
                 Auto Loans
               </NavLink>
+              <NavLink
+                to="/InflationCalculator"
+                className={`${InflationCalculator() ? "active" : ""}`}
+              >
+                InflationCalculator
+              </NavLink>
+              </section>
           </Modal.Body>
           <Modal.Footer className="modal__">
             <Button
