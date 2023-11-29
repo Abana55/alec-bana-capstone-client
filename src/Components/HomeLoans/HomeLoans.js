@@ -173,7 +173,7 @@ function HomeLoans() {
               </label>
             </div>
             <div className="input__form-box">
-              <label className="input__sub-title">
+              <label className="input__sub-title input__option">
                 Interest Rate:
                 <input
                   className="input__input"
@@ -185,9 +185,11 @@ function HomeLoans() {
               </label>
             </div>
             <input
+            className="input__submit"
             type="submit"
             />
           </form>
+          
         <section className="input__body">
           
           { activeGraph === "donut" ? (
@@ -197,7 +199,7 @@ function HomeLoans() {
               downPaymentAmount={downPaymentAmount}
             />
             ) : (
-            <AmortizationTable
+            <AmortizationTable className="amortization"
             loanAmount={loanAmount}
             loanDetails={loanDetails}
             downPaymentAmount={downPaymentAmount}e

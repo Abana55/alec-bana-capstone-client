@@ -65,7 +65,7 @@ function AutoLoans() {
   }
     return (
       <>
-      <h1>Auto Loans</h1>
+      <h1 className='input__title'>Auto Loans</h1>
       <form 
           className="input__box"
           onSubmit={handleSubmit}

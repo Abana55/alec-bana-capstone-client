@@ -4,8 +4,7 @@
 .donut {
 
     display: flex;
-    flex-direction: row-reverse;
-    background-color: #3D3839;
+    background-color: #2e4f4f;
     height: 70vh;
 
 
@@ -17,10 +16,19 @@
     &__input {
         display: flex;
         flex-direction: column;
+        font-size: 1rem;
+        padding-bottom: .5rem;
+        margin-left: .5rem;
+        margin-top: 2rem;
+        margin-right: 1rem;
     }
 
     &__form {
         font-size: 1.25rem;
+        border-radius: .5rem;
+        border-style: none;
+        color: #3D3839;
+    
     }
 }
 // canvas {

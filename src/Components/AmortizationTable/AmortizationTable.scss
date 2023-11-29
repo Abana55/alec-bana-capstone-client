@@ -2,16 +2,22 @@
 @use '../../styles/mixins' as *;
 
 .amortization {
+  color:black;
     height: 90vh;
+    background-color: #2e4f4f;
+    width: 45vw;
     &__title {
         margin: 0;
+        background-color: #2e4f4f;
     }
     &__sub-title {
         margin-top: 1rem;
         font-size: 1.25rem;
+        background-color: #2e4f4f;
     }
     &__sub-title-box {
         display: flex;
+        height: 4vh;
     }
     &__p-box {
         display: flex;
@@ -21,21 +27,26 @@
         height: 40vh;
 
     }
+    // &__p {
+    //   color: #333;
+    // }
 }
 .table__container {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: #262626;
+
   
     thead {
-      background-color: #f2f2f2;
+      background-color: black;
   
       th {
         padding: 10px;
         text-align: left;
         font-weight: bold;
         font-size: 16px;
-        border: 1px solid #ddd;
+        border: 1px solid #2e4f4f;
         border-bottom: 2px solid #333; 
       }
     }
@@ -43,13 +54,14 @@
     tbody {
       tr {
         &:hover {
-          background-color: #f5f5f5;
+          background-color: #2e4f4f;
         }
   
         td {
           padding: 10px;
-          border: 1px solid #ddd;
+          border: 1px solid gold;
           font-size: 16px; 
+          color: black;
         }
       }
     }

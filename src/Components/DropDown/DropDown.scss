@@ -5,7 +5,7 @@
     &__box {        
         display: flex;
         flex-direction: row;
-        background-color: white;
+        background-color: #353130;
         height: 30vh;
         width: 60vw;
         border-radius: 4px;
@@ -18,7 +18,7 @@
         // padding: $mobile-padding-left-right;
 
         @include tablet {
-            background-color: $primary-white;
+            background-color: #353130;
             padding: $tablet-padding-left-right;
             position: absolute;
             margin: auto;
@@ -27,7 +27,7 @@
             top: 30%;
         }
         @include desktop {
-            background-color: $primary-white;
+            background-color: #353130;
             padding: $desktop-padding-left-right;
             position: absolute;
             top: 5rem;
@@ -61,7 +61,7 @@
         border-radius: .3rem;
         border-style: none;
         width: 10vw;
-        background-color: white;
+        background-color: #353130;
         margin-left: 1rem;
     }
     &__drop :hover {
@@ -75,5 +75,5 @@
     }
 }
 .model-content {
-    background-color: white;
+    background-color: #353130;
 }

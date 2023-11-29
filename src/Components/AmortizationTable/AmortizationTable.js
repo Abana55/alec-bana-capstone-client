@@ -66,11 +66,6 @@ const handleTotalCost = (event) => {
 
 console.log('LOOK HERE: ',loanDetails)
 
-// function currencyFormat(num) {
-//   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-// 
-
-
   return (
     <div>
       <section className="amortization">
@@ -90,7 +85,7 @@ console.log('LOOK HERE: ',loanDetails)
               {
                 type: "line",
                 label: "Principal Paid",
-                borderColor: "offwhite",
+                borderColor: "#cbe4de",
                 data: loanDetails.yearlyPrincipalPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -102,7 +97,7 @@ console.log('LOOK HERE: ',loanDetails)
               {
                 type: "line",
                 label: "Interest Paid",
-                borderColor: "grey",
+                borderColor: "#0e8388",
                 data: loanDetails.yearlyInterestPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -113,7 +108,7 @@ console.log('LOOK HERE: ',loanDetails)
               {
                 type: "line",
                 label: "Remaining Principal",
-                borderColor: "gold",
+                borderColor: "aqua",
                 data: loanDetails.yearlyRemainingPrincipal,
                 tension: 0.5,
                 borderWidth: 3,
@@ -139,14 +134,14 @@ console.log('LOOK HERE: ',loanDetails)
         </thead>
         
         <tbody>
-    {loanDetails ? loanDetails.yearlyInterestPaid.map((loanDetails) => (
+    {loanDetails ? loanDetails.yearlyRemainingPrincipal.map((loanDetails) => (
         <tr key={loanDetails.id}>
             <td className="table__position">
             </td>
-            <td className="table__position"><p>Date: {loanDetails}</p></td>
-            <td className="table__position"><p>Principal: {loanDetails.yearlyPrincipalPaid}</p></td>
-            <td className="table__position"><p>Interest: {loanDetails.yearlyInterestPaid}</p></td>
-            <td className="table__position"><p>Remaining Balance: {loanDetails.yearlyRemainingPrincipal}</p></td>
+            <td className="table__position"><p className="amortization__p">{loanDetails}</p></td>
+            <td className="table__position"><p className="amortization__p">Principal: {loanDetails.yearlyPrincipalPaid}</p></td>
+            <td className="table__position"><p className="amortization__p">Interest: {loanDetails.yearlyInterestPaid}</p></td>
+            <td className="table__position"><p className="amortization__p">Remaining Balance: {handleTotalCost}</p></td>
         </tr> 
      )) : <div>loading</div>}
 </tbody>

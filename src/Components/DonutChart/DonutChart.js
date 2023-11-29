@@ -6,9 +6,14 @@ function Donut({ loanDetails }) {
   const [propertyTax, setPropertyTax] = useState(350);
   const [homeownersInsurance, setHomeownersInsurance] = useState(350);
   const [hoaFee, setHoaFee] = useState(0);
+  const [other, setOther] = useState(0);
 
-  const handleHomeownersChange = (event) => {
-    setHomeownersInsurance(Number(event.taget.value));
+  const handleOther = (event) => {
+    setOther(Number(event.target.value));
+  }
+
+  const handleHomeownersInsuranceChange = (event) => {
+    setHomeownersInsurance(Number(event.target.value));
   };
 
   const handleHoaFee = (event) => {
@@ -21,13 +26,13 @@ function Donut({ loanDetails }) {
 
   const monthlyPayment = loanDetails.monthlyPayment || 0;
   const totalMonthlyPayment = monthlyPayment + propertyTax;
-  const totalMonthlyPayments = totalMonthlyPayment + homeownersInsurance + hoaFee;
+  const totalMonthlyPayments = totalMonthlyPayment + homeownersInsurance + hoaFee + other;
 
   return (
     <div className="donut">
       <div className="donut__form-box">
-        <label className="donut__total">Total Monthly Payment: {Math.round(totalMonthlyPayments)}</label>
         <label className="donut__input">
+          <span className="donut__icon--color"></span>
           PropertyTax:
           <input
           className="donut__form"
@@ -38,16 +43,18 @@ function Donut({ loanDetails }) {
           />
         </label>
         <label className="donut__input">
+          <span className="donut__icon--color1"></span>
           Homeowner's Insurance:
           <input
           className="donut__form"
           type="number"
           value={homeownersInsurance}
-          onChange={handleHomeownersChange}
+          onChange={handleHomeownersInsuranceChange}
           min={0}
           />
         </label>
         <label className="donut__input">
+          <span className="donut__icon--color2"></span>
           HOA fee's:
           <input
           className="donut__form"
@@ -57,22 +64,36 @@ function Donut({ loanDetails }) {
           min={0}
           />
         </label>
+        <label className="donut__input">
+          <span className="donut__icon--color3"></span>
+          Other:
+          <input
+          className="donut__form"
+          type="number"
+          value={other}
+          onChange={handleOther}
+          min={0}
+          />
+        </label>
+        <div>
+        <label className="donut__total">Total Monthly Payment: {Math.round(totalMonthlyPayments)}</label>
+      </div>
       </div>
       <Doughnut
       className="donut__chart"
       height={400}
       width={400}
         data={{
-          labels: ["Monthly Payment", "Property Tax", "Homeowner's insurance", "Hoa Fee's"],
+          labels: ["Monthly Payment", "Property Tax", "Homeowner's insurance", "Hoa Fee's, Other"],
           datasets: [
             {
               label: "Monthly Payment Breakdown",
               data: [
-                monthlyPayment, propertyTax, homeownersInsurance, hoaFee
+                monthlyPayment, propertyTax, homeownersInsurance, hoaFee, other
               ],
-              backgroundColor: ["black", "gold", "grey", "silver"],
-              hoverOffset: 1,
-              borderWidth:3,
+              backgroundColor: ["#2c3333", "#2e4f4f", "#0e8388", "#cbe4de", "#2e4f4f"],
+              hoverOffset: 30,
+              borderWidth: 3,
               
             },
           ],
@@ -86,7 +107,9 @@ function Donut({ loanDetails }) {
           },
         }}  
       />
+
     </div>
+      
   );
 }
 
