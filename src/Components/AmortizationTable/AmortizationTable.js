@@ -47,24 +47,28 @@ const lineChartOptions = {
     },
   },
   legend: {
-    name: 'Position: left',
+    name: "Position: left",
     handler(chart) {
-      chart.options.plugins.legend.position = 'left';
+      chart.options.plugins.legend.position = "left";
       chart.update();
-    }
+    },
   },
 };
 
-function AmortizationTable({ loanAmount, downPaymentAmount, loanDetails, totalInterestPaid }) {
-const [totalCost, setTotalCost] = useState({});
+function AmortizationTable({
+  loanAmount,
+  downPaymentAmount,
+  loanDetails,
+  totalInterestPaid,
+}) {
+  const [totalCost, setTotalCost] = useState({});
 
-const handleTotalCost = (event) => {
-  setTotalCost(Number(event.target.value));
-  const totalCosts = totalInterestPaid + loanAmount;
+  const handleTotalCost = (event) => {
+    setTotalCost(Number(event.target.value));
+    const totalCost = totalInterestPaid + loanAmount;
+  };
 
-}
-
-console.log('LOOK HERE: ',loanDetails)
+  console.log("LOOK HERE: ", loanDetails);
 
   return (
     <div>
@@ -75,10 +79,16 @@ console.log('LOOK HERE: ',loanDetails)
             <p className="amortization__sub-title">Principal: </p>
             <p>{loanDetails.loanAmount}</p>
           </div>
-          <p className="amortization__sub-title">Interest: {loanDetails.totalInterestPaid}</p>
-          <p className="amortization__sub-title">Total cost of loan: {loanDetails.totalCost}</p>
+          <p className="amortization__sub-title">
+            Interest: {loanDetails.totalInterestPaid}
+          </p>
+          <p className="amortization__sub-title">
+            Total cost of loan: {loanDetails.totalCost}
+          </p>
         </div>
-        <Line width={300} height={300}
+        <Line
+          width={300}
+          height={300}
           className="amortization__chart"
           data={{
             datasets: [
@@ -92,7 +102,6 @@ console.log('LOOK HERE: ',loanDetails)
                 pointRadius: 2,
                 pointHoverRadius: 1,
                 usePointStyle: true,
-
               },
               {
                 type: "line",
@@ -102,8 +111,7 @@ console.log('LOOK HERE: ',loanDetails)
                 tension: 0.1,
                 borderWidth: 3,
                 pointRadius: 2,
-                pointHoverRadius: 1
-
+                pointHoverRadius: 1,
               },
               {
                 type: "line",
@@ -113,8 +121,7 @@ console.log('LOOK HERE: ',loanDetails)
                 tension: 0.5,
                 borderWidth: 3,
                 pointRadius: 1,
-                pointHoverRadius: 1
-
+                pointHoverRadius: 1,
               },
             ],
             labels: loanDetails.years,
@@ -132,19 +139,36 @@ console.log('LOOK HERE: ',loanDetails)
             <th>Remaining Balance</th>
           </tr>
         </thead>
-        
+
         <tbody>
-    {loanDetails ? loanDetails.yearlyRemainingPrincipal.map((loanDetails) => (
-        <tr key={loanDetails.id}>
-            <td className="table__position">
-            </td>
-            <td className="table__position"><p className="amortization__p">{loanDetails}</p></td>
-            <td className="table__position"><p className="amortization__p">Principal: {loanDetails.yearlyPrincipalPaid}</p></td>
-            <td className="table__position"><p className="amortization__p">Interest: {loanDetails.yearlyInterestPaid}</p></td>
-            <td className="table__position"><p className="amortization__p">Remaining Balance: {handleTotalCost}</p></td>
-        </tr> 
-     )) : <div>loading</div>}
-</tbody>
+          {loanDetails ? (
+            loanDetails.yearlyRemainingPrincipal.map((loanDetails) => (
+              <tr key={loanDetails.id}>
+                <td className="table__position"></td>
+                <td className="table__position">
+                  <p className="amortization__p">{loanDetails}</p>
+                </td>
+                <td className="table__position">
+                  <p className="amortization__p">
+                    Principal: {loanDetails.yearlyPrincipalPaid}
+                  </p>
+                </td>
+                <td className="table__position">
+                  <p className="amortization__p">
+                    Interest: {loanDetails.yearlyInterestPaid}
+                  </p>
+                </td>
+                <td className="table__position">
+                  <p className="amortization__p">
+                    Remaining Balance: {handleTotalCost}
+                  </p>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <div>loading</div>
+          )}
+        </tbody>
       </table>
     </div>
   );

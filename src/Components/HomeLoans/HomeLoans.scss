@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as *;
 
 * {
-    font-family: serif;
+    font-family: Arial;
     color: white;
     background-image: '../../assets/low-poly-abstract-white-golden-lines-background_1017-26507.avif';
 }
@@ -12,13 +12,11 @@
         font-weight: 100;
     }
     &__body {
-        margin-left: 3rem;
         background-color: #f7f8f9;
         box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
         display: flex;
         justify-content: space-around;
         border-radius: .5rem;
-        margin-right: 2rem;
 
 
     }
@@ -77,12 +75,14 @@
     }
     &__box {
         padding: 1rem;
-        width: 45vw;
-        margin-left: 2rem;
+        width: 100%;
         box-shadow: 0px 3px 7px rgba(255, 255, 255, 0.2);
         background-color: #2e4f4f;
-        border-radius: .5rem;
-        height: 32vh;
+        border-radius: 0.5rem;
+        height: 40vh;
+        margin-right: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
 
 
     }
@@ -121,7 +121,7 @@
         border-radius: .5rem;
         background-color:#0e8388 ;
         border-style: none;
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
     
 

@@ -5,13 +5,15 @@
 
     display: flex;
     background-color: #2e4f4f;
-    height: 70vh;
+    height: 60vh;
+    border-radius: 10px;
 
 
     &__total {
         display: flex;
         flex-direction: column;
         font-weight: 700;
+        overflow: hidden;
     }
     &__input {
         display: flex;

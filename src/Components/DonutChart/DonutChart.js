@@ -91,7 +91,7 @@ function Donut({ loanDetails }) {
               data: [
                 monthlyPayment, propertyTax, homeownersInsurance, hoaFee, other
               ],
-              backgroundColor: ["#2c3333", "#2e4f4f", "#0e8388", "#cbe4de", "#2e4f4f"],
+              backgroundColor: ["#2c333380", "#2e4f4f", "#0e838880", "#cbe4de", "#2e4f4f"],
               hoverOffset: 30,
               borderWidth: 3,
               
