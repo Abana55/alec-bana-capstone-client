@@ -1,26 +1,9 @@
-import "./AmortizationTable.scss";
-import React, { useState } from "react";
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LineElement,
-  LinearScale,
-  PointElement,
-  Title,
-  Tooltip,
-} from "chart.js";
+import React from "react";
+import { CategoryScale, Chart as ChartJS, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from "chart.js";
 import { Line } from "react-chartjs-2";
+import "./AmortizationTable.scss";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const lineChartOptions = {
   responsive: true,
@@ -47,28 +30,21 @@ const lineChartOptions = {
     },
   },
   legend: {
-    name: "Position: left",
-    handler(chart) {
-      chart.options.plugins.legend.position = "left";
-      chart.update();
-    },
+    position: "left",
   },
 };
 
-function AmortizationTable({
-  loanAmount,
-  downPaymentAmount,
-  loanDetails,
-  totalInterestPaid,
-}) {
-  const [totalCost, setTotalCost] = useState({});
+function AmortizationTable({ loanDetails }) {
+  if (!loanDetails) {
+    return <div>Loading...</div>;
+  }
 
-  const handleTotalCost = (event) => {
-    setTotalCost(Number(event.target.value));
-    const totalCost = totalInterestPaid + loanAmount;
+  const formatCurrency = (value) => {
+    if (typeof value === 'number' && !isNaN(value)) {
+      return value.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    }
+    return '';
   };
-
-  console.log("LOOK HERE: ", loanDetails);
 
   return (
     <div>
@@ -77,14 +53,10 @@ function AmortizationTable({
         <div className="amortization__sub-title-box">
           <div className="amortization__p-box">
             <p className="amortization__sub-title">Principal: </p>
-            <p>{loanDetails.loanAmount}</p>
+            <p>{formatCurrency(loanDetails.loanAmount)}</p>
           </div>
-          <p className="amortization__sub-title">
-            Interest: {loanDetails.totalInterestPaid}
-          </p>
-          <p className="amortization__sub-title">
-            Total cost of loan: {loanDetails.totalCost}
-          </p>
+          <p className="amortization__sub-title">Interest: {formatCurrency(loanDetails.totalInterestPaid)}</p>
+          <p className="amortization__sub-title">Total cost of loan: {formatCurrency(loanDetails.totalCost)}</p>
         </div>
         <Line
           width={300}
@@ -128,7 +100,6 @@ function AmortizationTable({
           }}
           options={lineChartOptions}
         />
-        {/* line chart goes here */}
       </section>
       <table className="table__container table__container--warehouse">
         <thead>
@@ -141,33 +112,20 @@ function AmortizationTable({
         </thead>
 
         <tbody>
-          {loanDetails ? (
-            loanDetails.yearlyRemainingPrincipal.map((loanDetails) => (
-              <tr key={loanDetails.id}>
-                <td className="table__position"></td>
-                <td className="table__position">
-                  <p className="amortization__p">{loanDetails}</p>
-                </td>
-                <td className="table__position">
-                  <p className="amortization__p">
-                    Principal: {loanDetails.yearlyPrincipalPaid}
-                  </p>
-                </td>
-                <td className="table__position">
-                  <p className="amortization__p">
-                    Interest: {loanDetails.yearlyInterestPaid}
-                  </p>
-                </td>
-                <td className="table__position">
-                  <p className="amortization__p">
-                    Remaining Balance: {handleTotalCost}
-                  </p>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <div>loading</div>
-          )}
+          {loanDetails.years.map((year, index) => (
+            <tr key={index}>
+              <td className="table__position">{year}</td>
+              <td className="table__position">
+                <p className="amortization__p">{formatCurrency(loanDetails.yearlyPrincipalPaid[index])}</p>
+              </td>
+              <td className="table__position">
+                <p className="amortization__p">{formatCurrency(loanDetails.yearlyInterestPaid[index])}</p>
+              </td>
+              <td className="table__position">
+                <p className="amortization__p">{formatCurrency(loanDetails.yearlyRemainingPrincipal[index])}</p>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
