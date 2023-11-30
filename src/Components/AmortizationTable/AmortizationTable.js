@@ -94,7 +94,7 @@ function AmortizationTable({ loanDetails }) {
               {
                 type: 'line',
                 label: 'Principal Paid',
-                borderColor: '#cbe4de',
+                borderColor: '#028174',
                 data: loanDetails.yearlyPrincipalPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -105,7 +105,7 @@ function AmortizationTable({ loanDetails }) {
               {
                 type: 'line',
                 label: 'Interest Paid',
-                borderColor: '#0e8388',
+                borderColor: '#f14666',
                 data: loanDetails.yearlyInterestPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -115,7 +115,7 @@ function AmortizationTable({ loanDetails }) {
               {
                 type: 'line',
                 label: 'Remaining Principal',
-                borderColor: 'aqua',
+                borderColor: '#ee8980',
                 data: loanDetails.yearlyRemainingPrincipal,
                 tension: 0.5,
                 borderWidth: 3,

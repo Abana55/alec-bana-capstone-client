@@ -1,7 +1,7 @@
 import './autoLoans.scss'
-// import DonutChart from "../DonutChart/DonutChart";
 import React, { useState } from "react";
 import axios from "axios";
+import { Pie } from 'react-chartjs-2';
 
 import {
   CategoryScale,
@@ -30,42 +30,42 @@ function AutoLoans() {
   const [downPaymentAmount, setDownPaymentAmount] = useState(1_000);
   const [interestRate, setInterestRate] = useState(8);
   const [loanTerm, setLoanTerm] = useState(5);
-  const [activeGraph, setActiveGraph] = useState("donut");
   const [loanDetails, setLoanDetails] = useState({});
-
 
   const handleLoanAmountChange = (event) => {
     const newLoanAmount = Number(event.target.value);
-
     setLoanAmount(newLoanAmount);
   };
 
   const handleDownPaymentAmountChange = (event) => {
     const newDownPaymentAmountChange = Number(event.target.value);
-
     setDownPaymentAmount(newDownPaymentAmountChange);
   };
 
   const handleLoanTermChange = (event) => {
     const newLoanTerm = Number(event.target.value);
-
     setLoanTerm(newLoanTerm);
   };
 
   const handleInterestRateChange = (event) => {
     const newInterestRate = Number(event.target.value);
-
     setInterestRate(newInterestRate);
   };
-  const handleSubmit = async(event) => {
-    event.preventDefault()
 
-  const res = await axios.post('http://localhost:8080/api/calculators/calculate-loan-details', {interestRate, loanTerm, principalAmount:loanAmount - downPaymentAmount})
-  setLoanDetails(res.data)
-  }
+  const handleSubmit = async(event) => {
+    console.log("hello world")
+    event.preventDefault()
+    
+    const res = await axios.post('http://localhost:8080/api/calculators/calculate-loan-details', {interestRate, loanTerm, principalAmount:loanAmount - downPaymentAmount});
+    console.log(res)
+    setLoanDetails(res.data)
+    
+  }  
+
     return (
       <>
       <h1 className='input__title'>Auto Loans</h1>
+      <section className='pie'>
       <form 
           className="input__box"
           onSubmit={handleSubmit}
@@ -95,7 +95,6 @@ function AutoLoans() {
               </div>
             </div>
             <div className="input__form-box">
-              {/*here is the dropdown to pick between 30/15/10/5 years */}
               <label className="input__option">
                 Loan Term
                 <select
@@ -127,9 +126,28 @@ function AutoLoans() {
             type="submit"
             />
           </form>
-      </>
-    );
-  }
-  
-  export default AutoLoans;
-  
+          <div className='pie__body'>
+          {loanDetails && (
+        <Pie
+          className="pie__chart"
+          height={400}
+          width={400}
+          data={{
+            labels: ["Auto Price", "Interest"],
+            datasets: [
+              {
+                data: [loanDetails.autoPrice || 0, loanDetails.interest || 0],
+                backgroundColor: ["#36A2EB", "#FF6384"],
+                hoverBackgroundColor: ["#36A2EB", "#FF6384"],
+              },
+            ],
+          }}
+        />
+      )}
+      </div>
+      </section>
+    </>
+  );
+}
+
+export default AutoLoans;

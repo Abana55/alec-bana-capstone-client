@@ -76,7 +76,7 @@ function Donut({ loanDetails }) {
           />
         </label>
         <div>
-        <label className="donut__total">Total Monthly Payment: {Math.round(totalMonthlyPayments)}</label>
+        <label className="donut__total">Monthly Payments {Math.round(totalMonthlyPayments)}</label>
       </div>
       </div>
       <Doughnut
@@ -91,7 +91,7 @@ function Donut({ loanDetails }) {
               data: [
                 monthlyPayment, propertyTax, homeownersInsurance, hoaFee, other
               ],
-              backgroundColor: ["#2c333380", "#2e4f4f", "#0e838880", "#cbe4de", "#2e4f4f"],
+              backgroundColor: ["#028174", "#f14666", "#ee8980", "#ffcdaa", "#0ab68b"],
               hoverOffset: 30,
               borderWidth: 3,
               
@@ -99,6 +99,7 @@ function Donut({ loanDetails }) {
           ],
         }}
         options={{
+          cutout: 40,
           plugins: {
             title: {
               display: true,
