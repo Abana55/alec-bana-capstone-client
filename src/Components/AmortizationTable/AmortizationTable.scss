@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .amortization {
+  height: 100%;
   &__title {
     font-size: 1.5rem;
     margin-bottom: 0;

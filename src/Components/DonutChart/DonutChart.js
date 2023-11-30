@@ -76,7 +76,10 @@ function Donut({ loanDetails }) {
           />
         </label>
         <div>
-        <label className="donut__total">Monthly Payments {Math.round(totalMonthlyPayments)}</label>
+        <label 
+        className="donut__total"
+        >Monthly Payments {Math.round(totalMonthlyPayments)}
+        </label>
       </div>
       </div>
       <Doughnut

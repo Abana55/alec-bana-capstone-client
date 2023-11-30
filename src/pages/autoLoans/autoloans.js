@@ -51,6 +51,7 @@ function AutoLoans() {
     const newInterestRate = Number(event.target.value);
     setInterestRate(newInterestRate);
   };
+  const [monthlyInterest, setMonthlyInterest] = useState(0)
 
   const handleSubmit = async(event) => {
     console.log("hello world")
@@ -59,11 +60,12 @@ function AutoLoans() {
     const res = await axios.post('http://localhost:8080/api/calculators/calculate-loan-details', {interestRate, loanTerm, principalAmount:loanAmount - downPaymentAmount});
     console.log(res)
     setLoanDetails(res.data)
-    
+    setMonthlyInterest(res.data.totalInterestPaid / 12);
   }  
 
     return (
       <>
+      <div className='pie__container'>
       <h1 className='input__title'>Auto Loans</h1>
       <section className='pie'>
       <form 
@@ -123,6 +125,7 @@ function AutoLoans() {
               </label>
             </div>
             <input
+            className='input__submit'
             type="submit"
             />
           </form>
@@ -130,14 +133,14 @@ function AutoLoans() {
           {loanDetails && (
         <Pie
           className="pie__chart"
-          height={400}
-          width={400}
+          height={4000}
+          width={4000}
           data={{
             labels: ["Auto Price", "Interest"],
             datasets: [
               {
-                data: [loanDetails.autoPrice || 0, loanDetails.interest || 0],
-                backgroundColor: ["#36A2EB", "#FF6384"],
+                data: [loanDetails.monthlyPayment || 0, monthlyInterest || 0],
+                backgroundColor: ["#028174", "#f14666"],
                 hoverBackgroundColor: ["#36A2EB", "#FF6384"],
               },
             ],
@@ -146,6 +149,7 @@ function AutoLoans() {
       )}
       </div>
       </section>
+      </div>
     </>
   );
 }

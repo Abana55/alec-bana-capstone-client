@@ -1,6 +1,9 @@
 .pie {
     display: flex;
     justify-content: center;
+    &__container {
+        background-color: #f1f6f9;
+    }
 
     &__chart {
         width: 30vw;
