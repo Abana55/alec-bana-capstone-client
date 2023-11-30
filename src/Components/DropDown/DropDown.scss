@@ -1,0 +1,62 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__button {
+    padding: 0.3125rem;
+    font-size: 1rem;
+    border: 1px solid slategray;
+    border-radius: 0.9375rem;
+    background-color: #e6eef4;
+    cursor: pointer;
+    width: 6.9375rem;
+    margin-left: 1rem;
+    color: slategray;
+  }
+
+  &__content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f1f6f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: .625rem;
+    width: 20vw;
+    z-index: 1;
+
+    .custom-dropdown:hover & {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: .625rem;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 8px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #028174;
+      border-radius: .625rem;
+    }
+
+    &.active {
+      background-color: #f14666;
+    }
+
+    &:visited {
+      text-decoration: none;
+      border-radius: .625rem;
+
+    }
+  }
+}

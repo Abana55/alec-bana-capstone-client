@@ -4,6 +4,9 @@ import Header from './Components/Header/Header';
 import HomePage from './pages/homepage/HomePage';
 import HomeLoans from "./Components/HomeLoans/HomeLoans";
 import AmortizationTable from "./Components/AmortizationTable/AmortizationTable";
+import AutolLoans from "./pages/autoLoans/autoloans";
+import Footer from "./Components/footer/Footer";
+import InflationCalculator from "./pages/MoneyInflation/MoneyInflation";
 
 function App() {
   return (
@@ -14,7 +17,10 @@ function App() {
             <Route path="/" element={<HomePage/>} />
             <Route path="/HomeLoans" element={<HomeLoans />} />
             <Route path="/AmortizationTable" element={<AmortizationTable />} />
+            <Route path="/AutoLoans" element={<AutolLoans />} />
+            <Route path="/inflationcalculator" element={<InflationCalculator />} />
           </Routes>
+          <Footer/>
     </BrowserRouter>
     </>
     

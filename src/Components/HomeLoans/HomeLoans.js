@@ -55,7 +55,7 @@ const lineChartOptions = {
 
 function HomeLoans() {
   const [loanAmount, setLoanAmount] = useState(500_000);
-  const [downPaymentAmount, setDownPaymentAmount] = useState(100_000);
+  const [downPaymentAmount, setDownPaymentAmount] = useState(10_000);
   const [interestRate, setInterestRate] = useState(8);
   const [loanTerm, setLoanTerm] = useState(15);
   const [activeGraph, setActiveGraph] = useState("donut");
@@ -102,43 +102,40 @@ function HomeLoans() {
     setLoanDetails(res.data)
     
   }
-  // const handleLoanDetails2 = (handleSubmit) => {
-  //   loanDetails2(res.data)
-  // }
   
-
   return (
-    <>
+    
       <section className="input">
-        <section className="input__">
+        <section className="input__top-box">
           <h1 className="input__title">Mortgage Calculator</h1>
-          <div className="input__">
-            <ul className="input__">
-              <li className="input__">
-                <button 
+          <div className="input__under-title">
+            <ul className="input__list">
+              <li className="input__hover">
+                <button
+                variant="outline-secondary" 
                 className="input__button "
                 onClick={handleDonutButtonClick}
-
                 >Payment Breakdown</button>
               </li>
-              <li className="input__">
-                <button className="input__"
+              <li className="input__hover">
+                <button 
+                variant="outline-secondary"
+                className="input__button"
                 onClick={handleLineButtonClick}
                 >Amortization chart</button>
               </li>
             </ul>
           </div>
-        </section>
-        <section className="input__body">
+          <section className="input__contains">
           <form 
           className="input__box"
           onSubmit={handleSubmit}
           >
-            <div className="input__">
-              <label className="input__">Home Price:</label>
+            <div className="input__form-box">
+              <label className="input__sub-title">Home Price:</label>
               <div className="input__">
                 <input
-                  className="input__"
+                  className="input__input"
                   value={loanAmount}
                   type="number"
                   min={0}
@@ -146,11 +143,11 @@ function HomeLoans() {
                 />
               </div>
             </div>
-            <div className="input__">
-              <label className="input__">Down Payment:</label>
+            <div className="input__form-box">
+              <label className="input__sub-title">Down Payment:</label>
               <div className="input__">
                 <input
-                  className="input__"
+                  className="input__input"
                   value={downPaymentAmount}
                   onChange={handleDownPaymentAmountChange}
                   type="number"
@@ -158,26 +155,28 @@ function HomeLoans() {
                 />
               </div>
             </div>
-            <div className="input__">
+            <div className="input__form-box">
               {/*here is the dropdown to pick between 30/15/10/5 years */}
-              <label className="input__">
+              <label className="input__option">
                 Loan Term
                 <select
+                  className="input__input"
                   value={loanTerm}
                   onChange={handleLoanTermChange}
                   defaultValue={loanTerm}
                 >
                   <option value={5}>5 Years</option>
                   <option value={10}>10 Years</option>
-                  <option value={15}>15Years</option>
+                  <option value={15}>15 Years</option>
                   <option value={30}>30 Years</option>
                 </select>
               </label>
             </div>
-            <div className="input__">
-              <label>
+            <div className="input__form-box">
+              <label className="input__sub-title input__option">
                 Interest Rate:
                 <input
+                  className="input__input"
                   value={interestRate}
                   onChange={handleInterestRateChange}
                   type="number"
@@ -186,25 +185,32 @@ function HomeLoans() {
               </label>
             </div>
             <input
+            className="input__submit"
             type="submit"
             />
           </form>
-          { activeGraph === "line" ? (
+          
+        <section className="input__body">
+          
+          { activeGraph === "donut" ? (
             <DonutChart
               loanAmount={loanAmount}
               loanDetails={loanDetails}
               downPaymentAmount={downPaymentAmount}
             />
             ) : (
-            <AmortizationTable
+            <AmortizationTable className="amortization"
             loanAmount={loanAmount}
             loanDetails={loanDetails}
-            downPaymentAmount={downPaymentAmount}
+            downPaymentAmount={downPaymentAmount}e
             />
           )}
           </section>
+          </section>
+          </section>
+
       </section>
-    </>
+
   );
 }
 
