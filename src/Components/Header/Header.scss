@@ -12,12 +12,16 @@
 
     }
     &__login {
-        padding: .3rem;
-        border-radius: .3rem;
-        border-style: none;
-        width: 10vw;
-        background-color: #0e8388;
+        padding: 0.3125rem;
+        font-size: 1rem;
+        border: 1px solid slategray;
+        border-radius: 0.9375rem;
+        background-color: #e6eef4;
+        cursor: pointer;
+        width: 6.9375rem;
         margin-left: 1rem;
+        color: slategray;
+        text-decoration: none;
     }
     &__drop{
         padding: .3rem;
@@ -28,6 +32,8 @@
     }
     &__box {
         width: 70vw;
+        display: flex;
+        justify-content: flex-end;
     }
 
 }

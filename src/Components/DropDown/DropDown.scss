@@ -1,79 +1,57 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
-.modal {
-    &__box {        
-        display: flex;
-        flex-direction: row;
-        background-color: #353130;
-        height: 30vh;
-        width: 60vw;
-        border-radius: 4px;
-        position: relative;
-        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-        top: 0rem;
-        right: 0rem;
-        bottom: 0rem;
-        left: 0rem;
-        // padding: $mobile-padding-left-right;
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
 
-        @include tablet {
-            background-color: #353130;
-            padding: $tablet-padding-left-right;
-            position: absolute;
-            margin: auto;
-            width: 70%;
-            padding-bottom: 10%;
-            top: 30%;
-        }
-        @include desktop {
-            background-color: #353130;
-            padding: $desktop-padding-left-right;
-            position: absolute;
-            top: 5rem;
-        }
-    }
-    &__title {
-        font-size: 2.25rem;
-        color: #FFC604;
-    }
-    &__background {
-        // background-color: rgba($color: black, $alpha: 0.5);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: fixed;
-        padding: 5rem;
-        width: 40vw;
-    }
-    &__body {
-        display: flex;
-        justify-content: space-between;
+  &__button {
+    padding: 0.3125rem;
+    font-size: 1rem;
+    border: 1px solid slategray;
+    border-radius: 0.9375rem;
+    background-color: #e6eef4;
+    cursor: pointer;
+    width: 6.9375rem;
+    margin-left: 1rem;
+    color: slategray;
+  }
 
+  &__content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f1f6f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    .custom-dropdown:hover & {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
     }
-    &__calc {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 8px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #e6eef4;
     }
-    &__drop {
-        padding: .3rem;
-        border-radius: .3rem;
-        border-style: none;
-        width: 10vw;
-        background-color: #353130;
-        margin-left: 1rem;
+
+    &.active {
+      background-color: #e6eef4;
     }
-    &__drop :hover {
-        background-color: #FFC604;
-        color: #3D3839;
+
+    &:visited {
+      text-decoration: none;
     }
-    &__box {
-        width: 70vw;
-        display: flex;
-        align-items: flex-end;
-    }
-}
-.model-content {
-    background-color: #353130;
+  }
 }

@@ -1,84 +1,52 @@
 import "./DropDown.scss";
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { NavLink, useLocation } from 'react-router-dom';
-import HomeLoans from "../HomeLoans/HomeLoans";
-import autoLoans from "../../pages/autoLoans/autoloans";
-import InflationCalculator from "../../pages/money-inflation/MoneyInflation";
+import { NavLink } from "react-router-dom";
 
+function CustomDropdown() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-function NavModal() {
-  const [show, setShow] = useState(false);
-  const location = useLocation();
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleDropdownClose = () => {
+    setDropdownOpen(false);
+  };
+
   return (
-    <>
-      <Button 
-      className="modal__drop"
-      variant="primary" 
-      onClick={handleShow}>
-        Calculators
-      </Button>
-
-      <Modal
-        className="modal__box"
-        show={show}
-        onHide={handleClose}
-        animation={false}
-      >
-        <section className="modal__background">
-          <Modal.Header className="modal__button" closeButton>
-            <Modal.Title className="modal__title">Summa</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="modal__body">
-            <section>
-              <h3>API-1</h3>
-            </section>
-            <section className="modal__calc">
-            <button>
-            <NavLink
-                to="/Homeloans"
-                className={`${HomeLoans() ? "active" : ""}`}
-              >
-                Mortgage Loans
-              </NavLink>
-              </button>
-              <NavLink
-                to="/autoLoans"
-                className={`${autoLoans() ? "active" : ""}`}
-              >
-                Auto Loans
-              </NavLink>
-              <NavLink
-                to="/InflationCalculator"
-                className={`${InflationCalculator() ? "active" : ""}`}
-              >
-                InflationCalculator
-              </NavLink>
-              </section>
-          </Modal.Body>
-          <Modal.Footer className="modal__">
-            <Button
-              className="modal__button"
-              variant="secondary"
-              onClick={handleClose}
-            >
-              Close
-            </Button>
-            <Button
-              className="modal__button"
-              variant="primary"
-              onClick={handleClose}
-            >
-            </Button>
-          </Modal.Footer>
-        </section>
-      </Modal>
-    </>
+    <div className="custom-dropdown">
+      <button 
+      className="custom-dropdown__button" 
+      onClick={handleDropdownToggle}>
+        Dropdown
+      </button>
+      {dropdownOpen && (
+        <div className="custom-dropdown__content" onMouseLeave={handleDropdownClose}>
+          <NavLink
+            to="/HomeLoans"
+            className="custom-dropdown__link"
+            activeClassName="active"
+          >
+            Mortgage Calculator
+          </NavLink>
+          <NavLink
+            to="/autoLoans"
+            className="custom-dropdown__link"
+            activeClassName="active"
+          >
+            Auto Loans
+          </NavLink>
+          <NavLink
+            to="/inflation-calculator"
+            className="custom-dropdown__link"
+            activeClassName="active"
+          >
+            Inflation Calculator
+          </NavLink>
+        </div>
+      )}
+    </div>
   );
 }
 
-export default NavModal;
+export default CustomDropdown;
