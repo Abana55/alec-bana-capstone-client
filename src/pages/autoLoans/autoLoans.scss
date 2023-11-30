@@ -1,0 +1,22 @@
+.pie {
+    display: flex;
+    justify-content: center;
+    &__container {
+        background-color: #f1f6f9;
+    }
+
+    &__chart {
+        width: 30vw;
+    }
+    &__body {
+        padding: 1rem;
+        width: 40%;
+        box-shadow: 1px 1px 3px rgb(27, 0, 0);
+        background-color: #e6eef4;
+        border-radius: 0.5rem;
+        margin-right: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+        color: #2c3333;
+    }
+}

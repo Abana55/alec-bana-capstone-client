@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+
+.footer {
+    background-color: #262626;
+    color: ghostwhite;
+    padding: 1rem;
+    text-align: center;
+  
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+  
+      &__left {
+        flex: 1;
+        color: ghostwhite;
+
+  
+        &__name {
+          margin-bottom: 0.5rem;
+          color: ghostwhite;
+
+        }
+      }
+  
+      &__right {
+        flex: 1;
+  
+        &__list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+  
+          &__item {
+            display: inline-block;
+            margin-right: 1rem;
+  
+            &__link {
+              color: #ffffff;
+              text-decoration: none;
+  
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

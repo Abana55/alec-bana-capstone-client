@@ -1,44 +1,52 @@
-import './DropDown.scss';
-import * as React from 'react';
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import "./DropDown.scss";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
+function CustomDropdown() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
-function NavModal() {
-    const [show, setShow] = useState(false);
+  const handleDropdownClose = () => {
+    setDropdownOpen(false);
+  };
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    return (
-        <>
-        <Button variant="primary" onClick={handleShow}>
-          Calculators
-        </Button>
-    
-        <Modal className='modal__box' show={show} onHide={handleClose} animation={false}>
-          <section className='modal__background'>  
-          <Modal.Header className='modal__button' closeButton>
-            <Modal.Title className='modal__title'>Summa</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className='modal__'>
-            <button className='modal__button'>Mortgage Calculator</button>
-          </Modal.Body>
-          <Modal.Footer className='modal__'>
-            <Button className='modal__button' variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button className='modal__button' variant="primary" onClick={handleClose}>
-              HomeLoans
-            </Button>
-          </Modal.Footer>
-        </section>  
-        </Modal>
-    
-      </>
-    );
+  return (
+    <div className="custom-dropdown">
+      <button 
+      className="custom-dropdown__button" 
+      onClick={handleDropdownToggle}>
+        Dropdown
+      </button>
+      {dropdownOpen && (
+        <div className="custom-dropdown__content" onMouseLeave={handleDropdownClose}>
+          <NavLink
+            to="/HomeLoans"
+            className="custom-dropdown__link"
+            activeClassName="active"
+          >
+            Mortgage Calculator
+          </NavLink>
+          <NavLink
+            to="/autoLoans"
+            className="custom-dropdown__link"
+            activeClassName="active"
+          >
+            Auto Loans
+          </NavLink>
+          <NavLink
+            to="/InflationCalculator"
+            className="custom-dropdown__link"
+            activeClassName="active"
+          >
+            Inflation Calculator
+          </NavLink>
+        </div>
+      )}
+    </div>
+  );
 }
 
-
-export default NavModal;
+export default CustomDropdown;

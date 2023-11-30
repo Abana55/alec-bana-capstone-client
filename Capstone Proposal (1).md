@@ -1,5 +1,9 @@
 # Project Title
 
+dive deeper property value estimations based on zip code or something like that to people know if their home purchase is a good investemtn 
+
+auto one depreciation value for car models
+
 ## Overview
 
 What is your app? Brief description in a couple of sentences.

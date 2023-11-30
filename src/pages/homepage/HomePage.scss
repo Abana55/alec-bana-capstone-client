@@ -1,2 +1,54 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
+
+
+.home {
+    padding: 20px;
+    background-color: #f1f6f9;
+    color: #2c3333;
+  
+    &__hero {
+      display: flex;
+      align-items: center;
+  
+      &-img {
+        max-width: 300px; 
+        margin-right: 20px;
+      }
+  
+      &__title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+  
+      &__subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+      }
+  
+      &__cta {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #0e8388;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #075b5f;
+        }
+      }
+    }
+  
+    &__mission {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  
+    &__features {
+      // Add styling for features section if needed
+    }
+  
+  }
