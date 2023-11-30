@@ -1,49 +1,72 @@
-import React from "react";
-import { CategoryScale, Chart as ChartJS, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from "chart.js";
-import { Line } from "react-chartjs-2";
-import "./AmortizationTable.scss";
+import React, { useState, useEffect } from 'react';
+import { Line } from 'react-chartjs-2';
+import {
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LineElement,
+  LinearScale,
+  PointElement,
+  Title,
+  Tooltip,
+} from 'chart.js';
+import './AmortizationTable.scss';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const lineChartOptions = {
   responsive: true,
   plugins: {
     title: {
       display: true,
-      text: "Yearly Payment Breakdown",
+      text: 'Yearly Payment Breakdown',
     },
   },
   scales: {
     x: {
       title: {
-        color: "grey",
+        color: 'grey',
         display: true,
-        text: "Years",
+        text: 'Years',
       },
+      maxTicksLimit: 1,
     },
     y: {
       title: {
-        color: "grey",
+        color: 'grey',
         display: true,
-        text: "$ Amount",
+        text: '$ Amount',
       },
     },
   },
   legend: {
-    position: "left",
+    position: 'left',
   },
 };
 
 function AmortizationTable({ loanDetails }) {
-  if (!loanDetails) {
-    return <div>Loading...</div>;
-  }
+  const [totalLoanAmount, setTotalLoanAmount] = useState(0);
 
   const formatCurrency = (value) => {
-    if (typeof value === 'number' && !isNaN(value)) {
-      return value.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    try {
+      if (value !== undefined && value !== null) {
+        return typeof value === 'number' && !isNaN(value)
+          ? value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+          : '';
+      }
+      return '';
+    } catch (error) {
+      console.error('Error formatting currency:', error);
+      return '';
     }
-    return '';
   };
 
   return (
@@ -55,8 +78,12 @@ function AmortizationTable({ loanDetails }) {
             <p className="amortization__sub-title">Principal: </p>
             <p>{formatCurrency(loanDetails.loanAmount)}</p>
           </div>
-          <p className="amortization__sub-title">Interest: {formatCurrency(loanDetails.totalInterestPaid)}</p>
-          <p className="amortization__sub-title">Total cost of loan: {formatCurrency(loanDetails.totalCost)}</p>
+          <p className="amortization__sub-title">
+            Interest: {formatCurrency(loanDetails.totalInterestPaid)}
+          </p>
+          <p className="amortization__sub-title">
+            Total loan amount: {formatCurrency(totalLoanAmount)}
+          </p>
         </div>
         <Line
           width={300}
@@ -65,9 +92,9 @@ function AmortizationTable({ loanDetails }) {
           data={{
             datasets: [
               {
-                type: "line",
-                label: "Principal Paid",
-                borderColor: "#cbe4de",
+                type: 'line',
+                label: 'Principal Paid',
+                borderColor: '#cbe4de',
                 data: loanDetails.yearlyPrincipalPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -76,9 +103,9 @@ function AmortizationTable({ loanDetails }) {
                 usePointStyle: true,
               },
               {
-                type: "line",
-                label: "Interest Paid",
-                borderColor: "#0e8388",
+                type: 'line',
+                label: 'Interest Paid',
+                borderColor: '#0e8388',
                 data: loanDetails.yearlyInterestPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -86,9 +113,9 @@ function AmortizationTable({ loanDetails }) {
                 pointHoverRadius: 1,
               },
               {
-                type: "line",
-                label: "Remaining Principal",
-                borderColor: "aqua",
+                type: 'line',
+                label: 'Remaining Principal',
+                borderColor: 'aqua',
                 data: loanDetails.yearlyRemainingPrincipal,
                 tension: 0.5,
                 borderWidth: 3,
@@ -110,19 +137,24 @@ function AmortizationTable({ loanDetails }) {
             <th>Remaining Balance</th>
           </tr>
         </thead>
-
         <tbody>
           {loanDetails.years.map((year, index) => (
             <tr key={index}>
               <td className="table__position">{year}</td>
               <td className="table__position">
-                <p className="amortization__p">{formatCurrency(loanDetails.yearlyPrincipalPaid[index])}</p>
+                <p className="amortization__p">
+                  {formatCurrency(loanDetails.yearlyPrincipalPaid[index])}
+                </p>
               </td>
               <td className="table__position">
-                <p className="amortization__p">{formatCurrency(loanDetails.yearlyInterestPaid[index])}</p>
+                <p className="amortization__p">
+                  {formatCurrency(loanDetails.yearlyInterestPaid[index])}
+                </p>
               </td>
               <td className="table__position">
-                <p className="amortization__p">{formatCurrency(loanDetails.yearlyRemainingPrincipal[index])}</p>
+                <p className="amortization__p">
+                  {formatCurrency(loanDetails.yearlyRemainingPrincipal[index])}
+                </p>
               </td>
             </tr>
           ))}
@@ -130,6 +162,6 @@ function AmortizationTable({ loanDetails }) {
       </table>
     </div>
   );
-}
+};
 
 export default AmortizationTable;

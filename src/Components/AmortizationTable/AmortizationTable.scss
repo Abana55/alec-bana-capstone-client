@@ -2,69 +2,65 @@
 @use '../../styles/mixins' as *;
 
 .amortization {
-  color:black;
-    height: 90vh;
-    background-color: #2e4f4f;
-    width: 45vw;
-    &__title {
-        margin: 0;
-        background-color: #2e4f4f;
-    }
-    &__sub-title {
-        margin-top: 1rem;
-        font-size: 1.25rem;
-        background-color: #2e4f4f;
-    }
-    &__sub-title-box {
-        display: flex;
-        height: 4vh;
-    }
-    &__p-box {
-        display: flex;
-        flex-direction: column;
-    }
-    &__chart {
-        height: 40vh;
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    border-bottom:2px solid #f1f6f9;
+  }
 
-    }
-    // &__p {
-    //   color: #333;
-    // }
+  &__sub-title {
+    margin-top: 1rem;
+    font-size: .7rem;
+    background-color: #e6eef4;
+  }
+
+  &__sub-title-box {
+    display: flex;
+    height: 8vh;
+  }
+
+  &__p-box {
+    display: flex;
+    flex-direction: column;
+  }
+  &__p {
+    color: slategray;
+    margin: 0;
+    font-size: 1rem;
+  }
 }
 .table__container {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #262626;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #e6eef4;
 
-  
-    thead {
-      background-color: black;
-  
-      th {
-        padding: 10px;
-        text-align: left;
-        font-weight: bold;
-        font-size: 16px;
-        border: 1px solid #2e4f4f;
-        border-bottom: 2px solid #333; 
-      }
+  thead {
+    background-color: #e6eef4;
+    color: slategray;
+
+    th {
+      padding: 10px;
+      text-align: left;
+      font-weight: bold;
+      font-size: 16px;
+      border: 1px solid #e6eef4;
+      border-bottom: 2px solid #333;
     }
-  
-    tbody {
-      tr {
-        &:hover {
-          background-color: #2e4f4f;
-        }
-  
-        td {
-          padding: 10px;
-          border: 1px solid gold;
-          font-size: 16px; 
-          color: black;
-        }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: #e6eef4;
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid slategray;
+        font-size: 16px;
+        color: black;
       }
     }
   }
-  
-
+}
