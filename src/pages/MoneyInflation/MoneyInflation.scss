@@ -1,0 +1,41 @@
+.inflate {
+    margin-left: 3rem;
+    &__box {
+        padding: 1rem;
+        width: 30vw;
+        box-shadow: 1px 1px 3px rgb(27 0 0);
+        background-color: #e6eef4;
+        border-radius: 0.5rem;
+        height: 40vh;
+        margin-right: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+        color: #2c3333;
+    }
+    &__form {
+        padding: 0.25rem;
+        display: flex;
+        flex-direction: column;
+    }
+    &__input {
+        padding: 0.25rem;
+        font-size: 1rem;
+     border-style: none;
+    border-radius: 0.25rem;
+    border-width: 0.0625rem;
+    color: black;
+    width: 25vw;
+    background-color: #f1f6f9;
+    }
+    &__button {
+        padding: 0.3125rem;
+        font-size: 1rem;
+        border: 1px solid slategray;
+        border-radius: 0.9375rem;
+        background-color: #e6eef4;
+        cursor: pointer;
+        width: 6.9375rem;
+        margin-left: 1rem;
+        color: slategray;
+    }
+}

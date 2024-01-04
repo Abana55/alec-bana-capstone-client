@@ -16,28 +16,30 @@ function InflationCalculator() {
   console.log("hi")
 
   return (
-    <div>
+    <div className='inflate'>
       <h2>Inflation Calculator</h2>
+      <section className='inflate__box'>
       <div>
-        <label>Initial Amount:</label>
-        <input type="number" value={initialAmount} onChange={(e) => setInitialAmount(e.target.value)} />
+        <label className='inflate__form'>Initial Amount:</label>
+        <input className='inflate__input' type="number" value={initialAmount} onChange={(e) => setInitialAmount(e.target.value)} />
       </div>
       <div>
-        <label>Initial Year:</label>
-        <input type="number" value={initialYear} onChange={(e) => setInitialYear(e.target.value)} />
+        <label className='inflate__form'>Initial Year:</label>
+        <input className='inflate__input' type="number" value={initialYear} onChange={(e) => setInitialYear(e.target.value)} />
       </div>
       <div>
-        <label>Target Year:</label>
-        <input type="number" value={targetYear} onChange={(e) => setTargetYear(e.target.value)} />
+        <label className='inflate__form'>Target Year:</label>
+        <input className='inflate__input' type="number" value={targetYear} onChange={(e) => setTargetYear(e.target.value)} />
       </div>
       <div>
-        <label>Inflation Rate (%):</label>
-        <input type="number" value={inflationRate} onChange={(e) => setInflationRate(e.target.value)} />
+        <label className='inflate__form'>Inflation Rate (%):</label>
+        <input className='inflate__input' type="number" value={inflationRate} onChange={(e) => setInflationRate(e.target.value)} />
       </div>
-      <button onClick={calculateAdjustedValue}>Calculate Adjusted Value</button>
+      <button className='inflate__button' onClick={calculateAdjustedValue}>Calculate</button>
       <div>
         <p>Adjusted Value: ${calculateAdjustedValue()}</p>
       </div>
+      </section>
     </div>
   );
 };

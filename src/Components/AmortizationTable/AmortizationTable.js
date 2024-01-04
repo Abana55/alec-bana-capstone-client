@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
+import React, { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -9,8 +9,8 @@ import {
   PointElement,
   Title,
   Tooltip,
-} from 'chart.js';
-import './AmortizationTable.scss';
+} from "chart.js";
+import "./AmortizationTable.scss";
 
 ChartJS.register(
   CategoryScale,
@@ -27,28 +27,28 @@ const lineChartOptions = {
   plugins: {
     title: {
       display: true,
-      text: 'Yearly Payment Breakdown',
+      text: "Yearly Payment Breakdown",
     },
   },
   scales: {
     x: {
       title: {
-        color: 'grey',
+        color: "grey",
         display: true,
-        text: 'Years',
+        text: "Years",
       },
       maxTicksLimit: 1,
     },
     y: {
       title: {
-        color: 'grey',
+        color: "grey",
         display: true,
-        text: '$ Amount',
+        text: "$ Amount",
       },
     },
   },
   legend: {
-    position: 'left',
+    position: "left",
   },
 };
 
@@ -58,14 +58,17 @@ function AmortizationTable({ loanDetails }) {
   const formatCurrency = (value) => {
     try {
       if (value !== undefined && value !== null) {
-        return typeof value === 'number' && !isNaN(value)
-          ? value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-          : '';
+        return typeof value === "number" && !isNaN(value)
+          ? value.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })
+          : "";
       }
-      return '';
+      return "";
     } catch (error) {
-      console.error('Error formatting currency:', error);
-      return '';
+      console.error("Error formatting currency:", error);
+      return "";
     }
   };
 
@@ -92,9 +95,9 @@ function AmortizationTable({ loanDetails }) {
           data={{
             datasets: [
               {
-                type: 'line',
-                label: 'Principal Paid',
-                borderColor: '#028174',
+                type: "line",
+                label: "Principal Paid",
+                borderColor: "#028174",
                 data: loanDetails.yearlyPrincipalPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -103,9 +106,9 @@ function AmortizationTable({ loanDetails }) {
                 usePointStyle: true,
               },
               {
-                type: 'line',
-                label: 'Interest Paid',
-                borderColor: '#f14666',
+                type: "line",
+                label: "Interest Paid",
+                borderColor: "#f14666",
                 data: loanDetails.yearlyInterestPaid,
                 tension: 0.1,
                 borderWidth: 3,
@@ -113,9 +116,9 @@ function AmortizationTable({ loanDetails }) {
                 pointHoverRadius: 1,
               },
               {
-                type: 'line',
-                label: 'Remaining Principal',
-                borderColor: '#ee8980',
+                type: "line",
+                label: "Remaining Principal",
+                borderColor: "#ee8980",
                 data: loanDetails.yearlyRemainingPrincipal,
                 tension: 0.5,
                 borderWidth: 3,
@@ -162,6 +165,6 @@ function AmortizationTable({ loanDetails }) {
       </table>
     </div>
   );
-};
+}
 
 export default AmortizationTable;
