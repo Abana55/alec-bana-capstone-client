@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.scss';
-import hero from '../../assets/hero-img.jpg'
+import hero from '../../assets/finance.jpg'
 
 function HomePage() {
   return (
