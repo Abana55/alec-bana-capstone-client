@@ -2,7 +2,7 @@ import './MoneyInflation.scss';
 import React, { useState } from "react";
 
 function InflationCalculator() {
-  console.log('here');
+  
   const [initialAmount, setInitialAmount] = useState(1000);
   const [initialYear, setInitialYear] = useState(2020);
   const [targetYear, setTargetYear] = useState(2025);
@@ -13,7 +13,6 @@ function InflationCalculator() {
     const adjustedValue = initialAmount * Math.pow(1 + inflationRate / 100, yearsDifference);
     return adjustedValue.toFixed(2);
   };
-  console.log("hi")
 
   return (
     <div className='inflate'>

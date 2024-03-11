@@ -15,6 +15,12 @@
     width: 6.9375rem;
     margin-left: 1rem;
     color: slategray;
+    &:hover + &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: .625rem;
+    }
   }
 
   &__content {

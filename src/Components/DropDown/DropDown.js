@@ -1,52 +1,37 @@
-import "./DropDown.scss";
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import './DropDown.scss';
 
 function CustomDropdown() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  const handleDropdownToggle = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
 
-  const handleDropdownClose = () => {
-    setDropdownOpen(false);
-  };
-
-  return (
-    <div className="custom-dropdown">
-      <button 
-      className="custom-dropdown__button" 
-      onClick={handleDropdownToggle}>
-        Dropdown
-      </button>
-      {dropdownOpen && (
-        <div className="custom-dropdown__content" onMouseLeave={handleDropdownClose}>
-          <NavLink
-            to="/HomeLoans"
-            className="custom-dropdown__link"
-            activeClassName="active"
-          >
-            Mortgage Calculator
-          </NavLink>
-          <NavLink
-            to="/autoLoans"
-            className="custom-dropdown__link"
-            activeClassName="active"
-          >
-            Auto Loans
-          </NavLink>
-          <NavLink
-            to="/InflationCalculator"
-            className="custom-dropdown__link"
-            activeClassName="active"
-          >
-            Inflation Calculator
-          </NavLink>
+    return (
+        <div className="custom-dropdown">
+            <button onClick={toggleDropdown} className="custom-dropdown__button">
+                Dropdown
+            </button>
+            {isOpen && (
+                <div className="custom-dropdown__content">
+                    <NavLink to="/HomeLoans" className="custom-dropdown__link">
+                        Mortgage Calculator
+                    </NavLink>
+                    <NavLink to="/AutoLoans" className="custom-dropdown__link">
+                        Auto Loans
+                    </NavLink>
+                    <NavLink to="/InflationCalculator" className="custom-dropdown__link">
+                        Inflation Calcul
+                    </NavLink>
+                    <NavLink to="/InvestmentCalculator" className="custom-dropdown__link">
+                        Investment Calculator
+                    </NavLink>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
 export default CustomDropdown;
