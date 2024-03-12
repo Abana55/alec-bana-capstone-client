@@ -12,6 +12,22 @@
     padding-bottom: 0.5rem;
     box-shadow: 100px 3px 15px rgba(255, 255, 255, 0.2);
   }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__form {
+    flex-basis: 50%;
+    
+  }
+
+  &__results {
+    flex-basis: 40%;
+    
+  }
 
   &__form {
     padding: 1rem;
@@ -65,3 +81,26 @@
     width: 100%;
     max-width: 600px;
 }
+
+.calculator-terms {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calculator-term {
+    text-align: left;
+    padding: 10px;
+  
+    p {
+      margin-bottom: 10px;
+    }
+  }
+  
+  .calculator-formula {
+    font-style: italic;
+    color: #028174; 
+  }
