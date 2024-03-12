@@ -1,72 +1,67 @@
-.calculator-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.investment-calculator {
+  &__title {
+    padding-left: 4rem;
+    color: slategray;
+    font-size: 3rem;
+    background-color: #f1f6f9;
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 100px 3px 15px rgba(255, 255, 255, 0.2);
   }
-  
-  .calculator-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  
-  .calculator-form label {
+
+  &__form {
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 1px 1px 3px rgb(27, 0, 0);
+    background-color: #e6eef4;
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    color: #2c3333;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    gap: 20px;
   }
-  
-  .calculator-form input {
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-  
-  .calculator-form .full-width {
-    grid-column: 1 / -1;
-  }
-  
-  .calculator-form label {
+
+  &__form-label {
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: #2c3333;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    gap: 10px;
   }
-  
-  .calculator-form input {
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    margin-top: 5px;
+
+  &__form-input {
+    padding: 0.25rem;
+    font-size: 1rem;
+    border-style: none;
+    border-radius: 0.25rem;
+    border-width: 0.0625rem;
+    color: black;
+    width: 25vw;
+    background-color: #f1f6f9;
   }
-  
-  .calculator-results {
+
+  &__results, &__terms, &__use-case {
+    padding: 1rem;
+    width: 30vw;
+    box-shadow: 1px 1px 3px rgb(27 0 0);
+    background-color: #e6eef4;
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    color: #2c3333;
+  }
+}
+.investment-calculator__graph {
     margin-top: 20px;
-  }
-  
-  .calculator-results p {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .calculator-terms {
-    margin-top: 30px;
-  }
-  
-  .calculator-terms h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .calculator-terms ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .calculator-terms li {
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
+    width: 100%;
+    max-width: 600px;
+}

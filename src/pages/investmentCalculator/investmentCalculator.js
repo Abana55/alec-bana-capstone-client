@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Line } from "react-chartjs-2";
 import "./InvestmentCalculator.scss";
 
 function InvestmentCalculator() {
@@ -38,44 +39,122 @@ function InvestmentCalculator() {
   };
 
   const { capRate, annualCashFlow, roi } = calculateMetrics();
+  const years = Array.from({ length: loanTerm }, (_, i) => `Year ${i + 1}`);
 
+  const noiData = Array.from(
+    { length: loanTerm },
+    (_, i) => noi * Math.pow(1.05, i)
+  );
+  const capRateData = Array.from(
+    { length: loanTerm },
+    (_, i) => (noiData[i] / purchasePrice) * 100
+  );
+  const roiData = Array.from(
+    { length: loanTerm },
+    (_, i) => ((noiData[i] - annualMortgagePayment) / downPayment) * 100
+  );
+
+  const graphData = {
+    labels: years,
+    datasets: [
+      {
+        label: "Net Operating Income",
+        data: noiData,
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+      },
+      {
+        label: "Cap Rate",
+        data: capRateData,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+      },
+      {
+        label: "ROI",
+        data: roiData,
+        borderColor: "rgb(54, 162, 235)",
+        backgroundColor: "rgba(54, 162, 235, 0.2)",
+      },
+    ],
+  };
   return (
     <div className="investment-calculator">
-    <h2 className="investment-calculator__title">Real Estate Investment Calculator</h2>
-    <form className="investment-calculator__form">
-      <label className="investment-calculator__form-label">
-        Purchase Price:
-        <input
-          type="number"
-          className="investment-calculator__form-input"
-          value={purchasePrice}
-          onChange={e => setPurchasePrice(Number(e.target.value))}
-        />
-      </label>
-      <label className="investment-calculator__form-label">
-        Monthly Rental Income:
-        <input
-          type="number"
-          className="investment-calculator__form-input"
-          value={rentalIncome}
-          onChange={e => setRentalIncome(Number(e.target.value))}
-        />
-      </label>
-      </div>
-
-      <div className="calculator-results">
-        <p>Cap Rate: {capRate.toFixed(2)}%</p>
-        <p>Annual Cash Flow: ${annualCashFlow.toFixed(2)}</p>
-        <p>ROI: {roi.toFixed(2)}%</p>
-      </div>
-      <div className="calculator-use-case">
-        <h3>Use Case</h3>
-        <p>
-          Use this calculator to estimate the potential return on investment for
-          a real estate property. Enter the purchase price, expected rental
-          income, and other expenses to calculate the Cap Rate, Annual Cash
-          Flow, and ROI.
-        </p>
+      <h2 className="investment-calculator__title">
+        Real Estate Investment Calculator
+      </h2>
+      <form className="investment-calculator__form">
+        <div className="investment-calculator__form-group">
+          <label className="investment-calculator__form-label">
+            Purchase Price:
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={purchasePrice}
+              onChange={(e) => setPurchasePrice(Number(e.target.value))}
+            />
+          </label>
+          <label className="investment-calculator__form-label">
+            Monthly Rental Income:
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={rentalIncome}
+              onChange={(e) => setRentalIncome(Number(e.target.value))}
+            />
+          </label>
+          <label className="investment-calculator__form-label">
+            Expense Ratio:
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={expenseRatio}
+              onChange={(e) => setExpenseRatio(Number(e.target.value))}
+              step="0.01"
+            />
+          </label>
+          <label className="investment-calculator__form-label">
+            Interest Rate:
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={interestRate}
+              onChange={(e) => setInterestRate(Number(e.target.value))}
+              step="0.01"
+            />
+          </label>
+          <label className="investment-calculator__form-label">
+            Loan Term (years):
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={loanTerm}
+              onChange={(e) => setLoanTerm(Number(e.target.value))}
+            />
+          </label>
+          <label className="investment-calculator__form-label">
+            Down Payment Percentage:
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={downPaymentPercentage}
+              onChange={(e) => setDownPaymentPercentage(Number(e.target.value))}
+              step="1"
+            />
+          </label>
+          <label className="investment-calculator__form-label">
+            Occupancy Rate:
+            <input
+              type="number"
+              className="investment-calculator__form-input"
+              value={occupancyRate}
+              onChange={(e) => setOccupancyRate(Number(e.target.value))}
+              step="0.01"
+            />
+          </label>
+        </div>
+      </form>
+      <div className="investment-calculator__graph">
+        <Line data={graphData} options={{ responsive: true }} />
       </div>
       <div className="calculator-terms">
         <h3>Terms and Definitions</h3>
