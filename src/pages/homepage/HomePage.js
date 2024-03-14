@@ -1,6 +1,7 @@
 import React from 'react';
 import './HomePage.scss';
-import hero from '../../assets/finance.jpg'
+import hero from '../../assets/finance.jpg';
+import News from '../../Components/News/News';
 
 function HomePage() {
   return (
@@ -24,7 +25,7 @@ function HomePage() {
         </p>
 
         <div className="home__features">
-          {/* Add featured services or content here */}
+          <News/>
         </div>
 
         <div className="home__testimonials">
