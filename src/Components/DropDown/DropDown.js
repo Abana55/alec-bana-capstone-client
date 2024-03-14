@@ -23,7 +23,7 @@ function CustomDropdown() {
                         Auto Loans
                     </NavLink>
                     <NavLink to="/InflationCalculator" className="custom-dropdown__link">
-                        Inflation Calcul
+                        Inflation Calculator
                     </NavLink>
                     <NavLink to="/InvestmentCalculator" className="custom-dropdown__link">
                         Investment Calculator

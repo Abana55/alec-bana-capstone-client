@@ -12,9 +12,6 @@ function Header() {
                     <img className="header__img" src={Logo} alt="header-Logo" />
                 </NavLink>
                 <div className="header__box">
-                    <NavLink to="/login" className="header__login">
-                        Login
-                    </NavLink>
                     <CustomDropdown /> 
                 </div>
             </section>
