@@ -10,6 +10,17 @@ function BudgetingPage() {
         debtRepayment: 0
     });
     
+    const handleBudgetingStyleChange = (event) => {
+        setBudgetingStyle(event.target.value);
+    };
+
+    const handleIncomeChange = (event) => {
+        setIncome(event.target.value);
+    };
+
+    const handleExpenseChange = (event, category) => {
+        setExpenses({ ...expenses, [category]: event.target.value });
+    };
   return (
     <div>BudgetingPage</div>
   )
