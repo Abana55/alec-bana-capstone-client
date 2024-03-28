@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './News.scss'; // Make sure to import your SCSS file
 
 function News() {
   const [articles, setArticles] = useState([]);
@@ -17,23 +18,39 @@ function News() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="news">
+      <form onSubmit={handleSubmit} className="news__search">
         <input
           type="text"
           placeholder="Search for news..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button type="submit" className="investment-calculator__toggle">Search</button>
+        <button type="submit">Search</button>
       </form>
-      {articles.map((article, index) => (
-        <div key={index}>
-          <h2>{article.title}</h2>
-          <p>{article.description}</p>
-          <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
-        </div>
-      ))}
+      <div className="news__articles">
+        {articles.map((article, index) => (
+          <div key={index} className="news__article">
+            <div
+              className="news__article-image"
+              style={{ backgroundImage: `url(${article.image})` }}
+            />
+            <div className="news__article-content">
+              <h3 className="news__article-title">{article.title}</h3>
+              <p className="news__article-description">{article.description}</p>
+              <p className="news__article-date">Published on: {new Date(article.publishedAt).toLocaleDateString()}</p>
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="news__article-link"
+              >
+                Read more
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
