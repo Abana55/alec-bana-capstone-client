@@ -1,62 +1,84 @@
 .budgeting-page {
-    &__title {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-  
-    &__form {
-      margin-bottom: 2rem;
-    }
-  
-    &__form-label {
-      display: block;
-      margin-bottom: 1rem;
-    }
-  
-    &__form-select,
-    &__form-input {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 0.25rem;
-    }
-  
-    &__form-button {
-      display: block;
-      width: 100%;
-      padding: 0.75rem;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      margin-top: 1rem;
-  
-      &:hover {
-        background-color: #45a049;
-      }
-    }
-  
-    &__summary {
-      margin-bottom: 2rem;
-    }
-  
-    &__summary-title {
-      margin-bottom: 1rem;
-    }
-  
-    &__method-info {
-      background-color: #f2f2f2;
-      padding: 1rem;
-      border-radius: 0.25rem;
-    }
-  
-    &__method-info-title {
-      margin-bottom: 1rem;
-    }
-  
-    &__method-info-text {
-      margin-bottom: 1rem;
+  &__title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__form {
+    margin-bottom: 2rem;
+  }
+
+  &__form-label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &__form-select,
+  &__form-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+
+  &__form-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #45a049;
     }
   }
+
+  &__summary {
+    margin-bottom: 2rem;
+  }
+
+  &__summary-title {
+    margin-bottom: 1rem;
+  }
+
+  &__method-info {
+    background-color: #f2f2f2;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+
+  &__method-info-title {
+    margin-bottom: 1rem;
+  }
+
+  &__method-info-text {
+    margin-bottom: 1rem;
+  }
+  &__chart {
+    max-width: 400px;
+    max-height: 300px;
+    margin: 0 auto;
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+  &__form-card,
+  &__definition-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__definition-card {
+    text-align: left;
+  }
+}
