@@ -28,7 +28,7 @@ function CustomDropdown() {
                     <NavLink to="/InvestmentCalculator" className="custom-dropdown__link">
                         Investment Calculator
                     </NavLink>
-                    <NavLink to="/Budgeting" className="custom-dropdown__link">
+                    <NavLink to="/BudgetingPage" className="custom-dropdown__link">
                         Budgeting
                     </NavLink>
                 </div>

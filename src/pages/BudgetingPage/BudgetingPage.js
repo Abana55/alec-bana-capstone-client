@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Doughnut, Bar } from 'react-chartjs-2';
+import './BudgetingPage.scss';
 
 function BudgetingPage() {
   const [budgetingStyle, setBudgetingStyle] = useState("50/30/20 Rule");
