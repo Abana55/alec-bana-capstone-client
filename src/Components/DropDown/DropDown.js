@@ -12,7 +12,7 @@ function CustomDropdown() {
     return (
         <div className="custom-dropdown">
             <button onClick={toggleDropdown} className="custom-dropdown__button">
-                Dropdown
+                Calculators & Budgets
             </button>
             {isOpen && (
                 <div className="custom-dropdown__content">
@@ -27,6 +27,9 @@ function CustomDropdown() {
                     </NavLink>
                     <NavLink to="/InvestmentCalculator" className="custom-dropdown__link">
                         Investment Calculator
+                    </NavLink>
+                    <NavLink to="/Budgeting" className="custom-dropdown__link">
+                        Budgeting
                     </NavLink>
                 </div>
             )}
