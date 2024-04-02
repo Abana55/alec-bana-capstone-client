@@ -4,19 +4,34 @@ import './BudgetingForm.scss';
 const BudgetingForm = ({
   budgetingStyle,
   setBudgetingStyle,
-  formattedIncome,
-  handleIncomeChange,
+  income,
+  setIncome,
   expenses,
-  handleExpenseChange,
+  setExpenses,
   calculateBudget,
+  formatCurrency,
 }) => {
+  const handleIncomeChange = (event) => {
+    const value = parseFloat(event.target.value);
+    if (!isNaN(value)) {
+      setIncome(value);
+    }
+  };
+
+  const handleExpenseChange = (event) => {
+    const value = parseFloat(event.target.value);
+    if (!isNaN(value)) {
+      setExpenses({ ...expenses, total: value });
+    }
+  };
+
   return (
-    <div className="budgeting-page__form">
-      <div className="budgeting-page__form-card">
-        <label className="budgeting-page__form-label">
+    <div className="budgeting-form">
+      <div className="budgeting-form__card">
+        <label className="budgeting-form__label">
           Budgeting Style:
           <select
-            className="budgeting-page__form-select"
+            className="budgeting-form__select"
             value={budgetingStyle}
             onChange={(e) => setBudgetingStyle(e.target.value)}
           >
@@ -26,30 +41,25 @@ const BudgetingForm = ({
             <option value="70/20/10 Rule">70/20/10 Rule</option>
           </select>
         </label>
-        <label className="budgeting-page__form-label">
+        <label className="budgeting-form__label">
           Monthly Income:
           <input
-            type="text"
-            className="budgeting-page__form-input"
-            value={formattedIncome}
+            type="number"
+            className="budgeting-form__input"
+            value={income}
             onChange={handleIncomeChange}
           />
         </label>
-        {Object.entries(expenses).map(([category, value]) => (
-          <label key={category} className="budgeting-page__form-label">
-            {category.charAt(0).toUpperCase() + category.slice(1)}:
-            <input
-              type="text"
-              className="budgeting-page__form-input"
-              value={value}
-              onChange={(e) => handleExpenseChange(category, e.target.value)}
-            />
-          </label>
-        ))}
-        <button
-          className="budgeting-page__form-button"
-          onClick={calculateBudget}
-        >
+        <label className="budgeting-form__label">
+          Total Expenses:
+          <input
+            type="number"
+            className="budgeting-form__input"
+            value={expenses.total || 0}
+            onChange={handleExpenseChange}
+          />
+        </label>
+        <button className="budgeting-form__button" onClick={calculateBudget}>
           Calculate Budget
         </button>
       </div>
