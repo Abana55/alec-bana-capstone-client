@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BudgetingPage.scss";
 import BudgetSummary from "../../Components/BudgetingSummary/BudgetingSummary";
 import BudgetingForm from "../../Components/BudgetingForm/BudgetingForm";
@@ -19,7 +19,41 @@ function BudgetingPage() {
     }).format(value);
   };
 
-  const totalExpenses = expenses; 
+  const totalExpenses = expenses;
+
+  useEffect(() => {
+    const calculateBudgetSummary = () => {
+      switch (budgetingStyle) {
+        case "50/30/20 Rule":
+          return {
+            necessities: income * 0.5,
+            wants: income * 0.3,
+            savings: income * 0.2,
+          };
+        case "Zero-Based Budgeting":
+          return {
+            totalExpenses: totalExpenses,
+            remaining: income - totalExpenses,
+          };
+        case "Pay Yourself First":
+          return {
+            savings: income * 0.2,
+            remainingForExpenses: income - income * 0.2,
+          };
+        case "70/20/10 Rule":
+          return {
+            livingExpenses: income * 0.7,
+            savings: income * 0.2,
+            debtRepayment: income * 0.1,
+          };
+        default:
+          return {};
+      }
+    };
+
+    setBudgetSummary(calculateBudgetSummary());
+  }, [budgetingStyle, income, totalExpenses]);
+
   const doughnutChartData = {
     labels: ["Necessities", "Wants", "Savings"],
     datasets: [
@@ -40,7 +74,10 @@ function BudgetingPage() {
     datasets: [
       {
         label: "Amount",
-        data: [formatCurrency(totalExpenses), formatCurrency(income - totalExpenses)],
+        data: [
+          formatCurrency(totalExpenses),
+          formatCurrency(income - totalExpenses),
+        ],
         backgroundColor: ["#36A2EB", "#FFCE56"],
       },
     ],
@@ -80,6 +117,7 @@ function BudgetingPage() {
         budgetingStyle={budgetingStyle}
         income={income}
         totalExpenses={totalExpenses}
+        budgetSummary={budgetSummary}
         formatCurrency={formatCurrency}
       />
       <div className="budgeting-charts">
