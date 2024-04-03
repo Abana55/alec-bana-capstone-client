@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import "./BudgetingPage.scss";
-import BudgetingCharts from "../../Components/BudgetingCharts/BudgetingCharts";
 import BudgetSummary from "../../Components/BudgetingSummary/BudgetingSummary";
 import BudgetingForm from "../../Components/BudgetingForm/BudgetingForm";
 import BudgetingMethodDefinitions from "../../Components/BudgetingMethodDefinitions/BudgetingMethodDefinitions";
+import { Doughnut, Bar, Line } from "react-chartjs-2";
 
 function BudgetingPage() {
-  const [budgetSummary, setBudgetSummary] = useState({}); 
+  const [budgetSummary, setBudgetSummary] = useState({});
   const [monthlyData, setMonthlyData] = useState([]);
   const [budgetingStyle, setBudgetingStyle] = useState("50/30/20 Rule");
   const [income, setIncome] = useState(0);
-  const [formattedIncome, setFormattedIncome] = useState("$0");
-  const [expenses, setExpenses] = useState({
-    housing: 0,
-    utilities: 0,
-    groceries: 0,
-    transportation: 0,
-    entertainment: 0,
-    other: 0,
-  });
+  const [expenses, setExpenses] = useState(0);
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat("en-US", {
@@ -27,10 +19,33 @@ function BudgetingPage() {
     }).format(value);
   };
 
-  const totalExpenses = Object.values(expenses).reduce(
-    (sum, expense) => sum + expense,
-    0
-  );
+  const totalExpenses = expenses; 
+  const doughnutChartData = {
+    labels: ["Necessities", "Wants", "Savings"],
+    datasets: [
+      {
+        data: [
+          budgetSummary.necessities,
+          budgetSummary.wants,
+          budgetSummary.savings,
+        ],
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+      },
+    ],
+  };
+
+  const barChartData = {
+    labels: ["Total Expenses", "Remaining"],
+    datasets: [
+      {
+        label: "Amount",
+        data: [formatCurrency(totalExpenses), formatCurrency(income - totalExpenses)],
+        backgroundColor: ["#36A2EB", "#FFCE56"],
+      },
+    ],
+  };
+
   const lineGraphData = {
     labels: monthlyData.map((data) => data.month),
     datasets: [
@@ -57,8 +72,6 @@ function BudgetingPage() {
         setBudgetingStyle={setBudgetingStyle}
         income={income}
         setIncome={setIncome}
-        formattedIncome={formattedIncome}
-        setFormattedIncome={setFormattedIncome}
         expenses={expenses}
         setExpenses={setExpenses}
         formatCurrency={formatCurrency}
@@ -69,14 +82,15 @@ function BudgetingPage() {
         totalExpenses={totalExpenses}
         formatCurrency={formatCurrency}
       />
-      <BudgetingCharts
-        budgetingStyle={budgetingStyle}
-        budgetSummary={budgetSummary}
-        lineGraphData={lineGraphData}
-        monthlyData={monthlyData}
-        formatCurrency={formatCurrency}
-      />
-
+      <div className="budgeting-charts">
+        {budgetingStyle === "50/30/20 Rule" && (
+          <Doughnut data={doughnutChartData} />
+        )}
+        {budgetingStyle === "Zero-Based Budgeting" && (
+          <Bar data={barChartData} />
+        )}
+        <Line data={lineGraphData} />
+      </div>
       <BudgetingMethodDefinitions />
     </div>
   );
